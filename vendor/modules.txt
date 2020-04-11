@@ -1,0 +1,122 @@
+# github.com/aaronland/go-artisanal-integers v0.1.1
+github.com/aaronland/go-artisanal-integers
+# github.com/aaronland/go-artisanal-integers-proxy v0.2.0
+github.com/aaronland/go-artisanal-integers-proxy/service
+# github.com/aaronland/go-brooklynintegers-api v1.1.0
+github.com/aaronland/go-brooklynintegers-api
+# github.com/aaronland/go-http-bootstrap v0.0.5
+github.com/aaronland/go-http-bootstrap
+github.com/aaronland/go-http-bootstrap/resources
+# github.com/aaronland/go-http-leaflet v0.0.3
+github.com/aaronland/go-http-leaflet
+# github.com/aaronland/go-http-rewrite v0.0.4
+github.com/aaronland/go-http-rewrite
+# github.com/aaronland/go-http-server v0.0.0-20200406192045-de2f431abc6e
+github.com/aaronland/go-http-server
+# github.com/aaronland/go-http-tangramjs v0.0.6
+github.com/aaronland/go-http-tangramjs
+# github.com/aaronland/go-pool v0.0.0-20191128211702-88306299c758
+github.com/aaronland/go-pool
+# github.com/aaronland/go-roster v0.0.1
+github.com/aaronland/go-roster
+# github.com/aaronland/go-string v0.1.1
+github.com/aaronland/go-string/random
+# github.com/aaronland/go-uid v0.0.2
+github.com/aaronland/go-uid
+# github.com/aaronland/go-uid-artisanal v0.0.0-20191128230022-67bc446aa49d
+github.com/aaronland/go-uid-artisanal
+# github.com/aws/aws-lambda-go v1.10.0
+github.com/aws/aws-lambda-go/events
+github.com/aws/aws-lambda-go/lambda
+github.com/aws/aws-lambda-go/lambda/handlertrace
+github.com/aws/aws-lambda-go/lambda/messages
+github.com/aws/aws-lambda-go/lambdacontext
+# github.com/golang/protobuf v1.2.0
+github.com/golang/protobuf/proto
+# github.com/google/go-github v17.0.0+incompatible
+github.com/google/go-github/github
+# github.com/google/go-querystring v1.0.0
+github.com/google/go-querystring/query
+# github.com/jtacoma/uritemplates v1.0.0
+github.com/jtacoma/uritemplates
+# github.com/natefinch/atomic v0.0.0-20150920032501-a62ce929ffcc
+github.com/natefinch/atomic
+# github.com/patrickmn/go-cache v2.1.0+incompatible
+github.com/patrickmn/go-cache
+# github.com/paulmach/orb v0.1.6
+github.com/paulmach/orb
+github.com/paulmach/orb/clip
+github.com/paulmach/orb/geojson
+github.com/paulmach/orb/internal/length
+github.com/paulmach/orb/internal/mercator
+github.com/paulmach/orb/maptile
+github.com/paulmach/orb/planar
+# github.com/sfomuseum/go-http-leaflet-geotag v0.0.0-20200408190951-bda80bdc83f4
+github.com/sfomuseum/go-http-leaflet-geotag
+# github.com/sfomuseum/go-http-tilezen v0.0.4
+github.com/sfomuseum/go-http-tilezen/http
+# github.com/sfomuseum/go-tilezen v0.0.3
+github.com/sfomuseum/go-tilezen
+# github.com/sfomuseum/go-www-geotag v0.0.0-20200410231055-3d2ae9412e8c
+github.com/sfomuseum/go-www-geotag/app
+github.com/sfomuseum/go-www-geotag/assets/templates
+github.com/sfomuseum/go-www-geotag/flags
+github.com/sfomuseum/go-www-geotag/geo
+github.com/sfomuseum/go-www-geotag/geojson
+github.com/sfomuseum/go-www-geotag/writer
+github.com/sfomuseum/go-www-geotag/www
+# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0
+github.com/sfomuseum/go-www-geotag-whosonfirst/writer
+# github.com/tidwall/gjson v1.6.0
+github.com/tidwall/gjson
+# github.com/tidwall/match v1.0.1
+github.com/tidwall/match
+# github.com/tidwall/pretty v1.0.1
+github.com/tidwall/pretty
+# github.com/tidwall/sjson v1.1.1
+github.com/tidwall/sjson
+# github.com/tomtaylor/go-whosonfirst-format v0.2.0
+github.com/tomtaylor/go-whosonfirst-format
+# github.com/whosonfirst/algnhsa v0.1.0
+github.com/whosonfirst/algnhsa
+# github.com/whosonfirst/go-bindata-assetfs v1.0.1
+github.com/whosonfirst/go-bindata-assetfs
+# github.com/whosonfirst/go-cache v0.0.2
+github.com/whosonfirst/go-cache
+# github.com/whosonfirst/go-reader v0.1.1
+github.com/whosonfirst/go-reader
+# github.com/whosonfirst/go-reader-github v0.1.2
+github.com/whosonfirst/go-reader-github
+# github.com/whosonfirst/go-whosonfirst-export v0.3.1
+github.com/whosonfirst/go-whosonfirst-export
+github.com/whosonfirst/go-whosonfirst-export/options
+github.com/whosonfirst/go-whosonfirst-export/properties
+# github.com/whosonfirst/go-whosonfirst-id v0.0.2
+github.com/whosonfirst/go-whosonfirst-id
+# github.com/whosonfirst/go-whosonfirst-log v0.1.0
+github.com/whosonfirst/go-whosonfirst-log
+# github.com/whosonfirst/go-whosonfirst-sources v0.1.0
+github.com/whosonfirst/go-whosonfirst-sources
+github.com/whosonfirst/go-whosonfirst-sources/sources
+# github.com/whosonfirst/go-whosonfirst-uri v0.2.0
+github.com/whosonfirst/go-whosonfirst-uri
+# github.com/whosonfirst/go-writer v0.1.0
+github.com/whosonfirst/go-writer
+# github.com/whosonfirst/go-writer-github v0.0.2
+github.com/whosonfirst/go-writer-github
+# golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+golang.org/x/net/context
+golang.org/x/net/context/ctxhttp
+golang.org/x/net/html
+golang.org/x/net/html/atom
+# golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
+golang.org/x/oauth2
+golang.org/x/oauth2/internal
+# google.golang.org/appengine v1.4.0
+google.golang.org/appengine/internal
+google.golang.org/appengine/internal/base
+google.golang.org/appengine/internal/datastore
+google.golang.org/appengine/internal/log
+google.golang.org/appengine/internal/remote_api
+google.golang.org/appengine/internal/urlfetch
+google.golang.org/appengine/urlfetch
