@@ -59,6 +59,8 @@ github.com/paulmach/orb v0.1.6/go.mod h1:pPwxxs3zoAyosNSbNKn1jiXV2+oovRDObDKfTvR
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=
+github.com/sfomuseum/go-geojson-geotag v0.0.1 h1:tdcP9EIWHWbyQpsUuI2KMQdCY+NIMslaEJ78zTqw/w4=
+github.com/sfomuseum/go-geojson-geotag v0.0.1/go.mod h1:KC3HmXH9Aws5v5iPzCukiNGUlLfHITZAqFVLqvi2COg=
 github.com/sfomuseum/go-http-leaflet-geotag v0.0.0-20200408190951-bda80bdc83f4 h1:07QxTAGS6K6gfOj3Y8GfUy+Jv5wAygFgMKoVxrhstpc=
 github.com/sfomuseum/go-http-leaflet-geotag v0.0.0-20200408190951-bda80bdc83f4/go.mod h1:R56pMAP2OHurz+bDFkYL3RgISj/SQw2mbgTmL9FZ8WQ=
 github.com/sfomuseum/go-http-tilezen v0.0.4 h1:VtgK1o0e4orgLthumMLZ3NcZHHJakixRMPphmSGiKDQ=
@@ -73,8 +75,12 @@ github.com/sfomuseum/go-www-geotag v0.0.0-20200410225004-9f8f278a752a h1:buBChIy
 github.com/sfomuseum/go-www-geotag v0.0.0-20200410225004-9f8f278a752a/go.mod h1:OzC+SnnG6eK/Kq2kDeBuC20yqIjYiVDYtRU8yWC9saA=
 github.com/sfomuseum/go-www-geotag v0.0.0-20200410231055-3d2ae9412e8c h1:9E10iKITj2dqLIJlke8ksL2g6cvp6eqW1oCArB3u0pc=
 github.com/sfomuseum/go-www-geotag v0.0.0-20200410231055-3d2ae9412e8c/go.mod h1:OzC+SnnG6eK/Kq2kDeBuC20yqIjYiVDYtRU8yWC9saA=
+github.com/sfomuseum/go-www-geotag v0.0.0-20200413180115-389ef7ae07a0 h1:mBENSqPkXnU38KnakP9pUKFZ9XfGEYYcR71sik8vacg=
+github.com/sfomuseum/go-www-geotag v0.0.0-20200413180115-389ef7ae07a0/go.mod h1:+Ux1l7qTHRtJ7mF1+ARkJgfcHTVTNtiKuDLRNl7s/9c=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0 h1:2WJvfnv47l9dDyAeGIBt7OI6BZhL7TOQhn1uG5CZOm4=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0/go.mod h1:Q1hictduPTs9xavI/JpwjRvPlmedo72zlAwIZdvDvOY=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413183933-511665158c68 h1:ZvohkvtqTxFkV2X6k4zh9s6ZxcBzxd/z54cbQfgpq7Q=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413183933-511665158c68/go.mod h1:3TROka0JeiaA1C2DFYYtUHlMfimrQIFqF/ziSEKFFxo=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
@@ -123,6 +129,7 @@ github.com/whosonfirst/go-writer-github v0.0.2 h1:nqB/k/wZdCaQ0L50nWv+xoK16DpLgf
 github.com/whosonfirst/go-writer-github v0.0.2/go.mod h1:Yq8manmP3OVEZUtwjoXKcYBoLbkhSMCl5jQuqYCkqOM=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/net v0.0.0-20180724234803-3673e40ba225/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
+golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e h1:bRhVy7zSSasaqNksaRZiA5EEI+Ei4I1nO5Jh72wfHlg=
 golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/net v0.0.0-20190613194153-d28f0bde5980/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20190628185345-da137c7871d7 h1:rTIdg5QFRR7XCaK4LCjBiPbx8j4DQRpdYMnGn/bJUEU=
