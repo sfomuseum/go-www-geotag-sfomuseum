@@ -66,7 +66,7 @@ github.com/sfomuseum/go-www-geotag/flags
 github.com/sfomuseum/go-www-geotag/geo
 github.com/sfomuseum/go-www-geotag/writer
 github.com/sfomuseum/go-www-geotag/www
-# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413183933-511665158c68
+# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413190241-717febad1814
 github.com/sfomuseum/go-www-geotag-whosonfirst/writer
 # github.com/tidwall/gjson v1.6.0
 github.com/tidwall/gjson
