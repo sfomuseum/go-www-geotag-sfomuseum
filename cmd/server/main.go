@@ -26,7 +26,8 @@ func main() {
 	}
 
 	flags.Parse(fl)
-
+	fl.Set("enable-map-layers", "true")
+	
 	mux := http.NewServeMux()
 
 	err = sfom_app.AppendAssetHandlers(ctx, fl, mux)
