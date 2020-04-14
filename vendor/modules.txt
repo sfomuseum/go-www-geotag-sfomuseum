@@ -88,6 +88,8 @@ github.com/tidwall/sjson
 github.com/tomtaylor/go-whosonfirst-format
 # github.com/whosonfirst/algnhsa v0.1.0
 github.com/whosonfirst/algnhsa
+# github.com/whosonfirst/go-bindata v0.1.0
+github.com/whosonfirst/go-bindata
 # github.com/whosonfirst/go-bindata-assetfs v1.0.1
 github.com/whosonfirst/go-bindata-assetfs
 # github.com/whosonfirst/go-cache v0.0.2

@@ -129,6 +129,7 @@ github.com/tomtaylor/go-whosonfirst-format v0.2.0 h1:UD/kP2dFApJFkgo/gGC08/7t018
 github.com/tomtaylor/go-whosonfirst-format v0.2.0/go.mod h1:fjMnbCrPWx3EHMHWoyqH12A/nxAvWbdIPHjXBMteDm4=
 github.com/whosonfirst/algnhsa v0.1.0 h1:8wVksKaz1qor2Y6+fiLEPEPxsEEvUQgSdtSTQLMrnlA=
 github.com/whosonfirst/algnhsa v0.1.0/go.mod h1:swLBXxaVTv3s6dJLhekdQCuCTshUew+xHjptRC21RG0=
+github.com/whosonfirst/go-bindata v0.1.0 h1:SIjIa/+blKoda8iTaWqxzwFtEc00jNcB2M9dRwGemrg=
 github.com/whosonfirst/go-bindata v0.1.0/go.mod h1:qaBkVepgCeknoVuYsUXTJpnlxqrEcZzaIaqZ6XaK+Hk=
 github.com/whosonfirst/go-bindata-assetfs v1.0.1 h1:AA328GrND8/uDkf5+5U9Fakgr7QkzET/a6uuXDYpQp0=
 github.com/whosonfirst/go-bindata-assetfs v1.0.1/go.mod h1:ZCQnq9roYYk19IAwLQyMnDPSmE+lns9K85+85JSQ4DI=
