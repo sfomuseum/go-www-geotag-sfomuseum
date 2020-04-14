@@ -8,6 +8,7 @@ import (
 
 import (
 	"context"
+	sfom_app "github.com/sfomuseum/go-www-geotag-sfomuseum/app"
 	"github.com/sfomuseum/go-www-geotag/app"
 	"github.com/sfomuseum/go-www-geotag/flags"
 	"log"
@@ -28,13 +29,13 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	err = app.AppendAssetHandlers(ctx, fl, mux)
+	err = sfom_app.AppendAssetHandlers(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append asset handlers, %v", err)
 	}
 
-	err = app.AppendEditorHandler(ctx, fl, mux)
+	err = sfom_app.AppendEditorHandler(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append editor handler, %v", err)

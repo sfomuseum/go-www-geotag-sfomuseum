@@ -55,7 +55,6 @@ func AppendResourcesHandlerWithPrefix(next http.Handler, opts *ResourceOptions, 
 	return rewrite.AppendResourcesHandler(next, ext_opts)
 }
 
-/*
 func AssetsHandler() (http.Handler, error) {
 
 	fs := assetFS()
@@ -110,7 +109,6 @@ func AppendAssetHandlersWithPrefix(mux *http.ServeMux, prefix string) error {
 
 	return nil
 }
-*/
 
 func appendPrefix(prefix string, path string) string {
 

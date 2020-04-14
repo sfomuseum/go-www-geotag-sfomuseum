@@ -18,7 +18,7 @@ bake-assets:
 	go build -o bin/go-bindata cmd/go-bindata/main.go
 	go build -o bin/go-bindata-assetfs cmd/go-bindata-assetfs/main.go
 	rm -f static/*~ static/javascript/*~
-	@PATH=$(PATH):$(CWD)/bin bin/go-bindata-assetfs -pkg www -o www/assetsfs.go static static/javascript
+	@PATH=$(PATH):$(CWD)/bin bin/go-bindata-assetfs -pkg sfomuseum -o assets.go static static/javascript
 
 debug:
-	go run -mod vendor cmd/server/main.go -nextzen-apikey $(APIKEY) -enable-placeholder -placeholder-endpoint $(SEARCH) -enable-oembed -oembed-endpoints 'https://millsfield.sfomuseum.org/oembed/?url={url}' -enable-writer -writer-uri 'whosonfirst://?writer=$(WRITER)&reader=$(READER)&update=1&source=sfomuseum' -crumb-dsn debug
+	go run -mod vendor cmd/server/main.go -nextzen-apikey $(APIKEY) -enable-placeholder -placeholder-endpoint $(SEARCH) -enable-oembed -oembed-endpoints 'https://millsfield.sfomuseum.org/oembed/?url={url}' -enable-writer -writer-uri 'whosonfirst://?writer=$(WRITER)&reader=$(READER)&update=1&source=sfomuseum' -crumb-dsn debug --enable-map-layers

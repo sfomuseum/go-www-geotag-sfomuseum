@@ -96,6 +96,8 @@ github.com/sfomuseum/go-www-geotag v0.0.0-20200414002049-0d66988fb3a9 h1:XArYcj5
 github.com/sfomuseum/go-www-geotag v0.0.0-20200414002049-0d66988fb3a9/go.mod h1:44J7K3LiS3CEz3RNlyXIUQJRuFmCZbnhAm9SDOWVtGg=
 github.com/sfomuseum/go-www-geotag v0.0.0-20200414212401-c0ef531264d8 h1:4UY6Jh59QcJFS3SsMRiqyv1bOsOtjKFxnvCoZmQt4Fw=
 github.com/sfomuseum/go-www-geotag v0.0.0-20200414212401-c0ef531264d8/go.mod h1:aAoxI1DCKL2hLtWpzFJZxZnujyDL8OLwW/+uMkdzvNs=
+github.com/sfomuseum/go-www-geotag v0.0.0-20200414222300-e955a66018b9 h1:3iflxeEOG5mXSg6pJeN33jf+vwLG46rxv68iIjmKR7c=
+github.com/sfomuseum/go-www-geotag v0.0.0-20200414222300-e955a66018b9/go.mod h1:aAoxI1DCKL2hLtWpzFJZxZnujyDL8OLwW/+uMkdzvNs=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0 h1:2WJvfnv47l9dDyAeGIBt7OI6BZhL7TOQhn1uG5CZOm4=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0/go.mod h1:Q1hictduPTs9xavI/JpwjRvPlmedo72zlAwIZdvDvOY=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413183933-511665158c68 h1:ZvohkvtqTxFkV2X6k4zh9s6ZxcBzxd/z54cbQfgpq7Q=
@@ -108,6 +110,8 @@ github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414002253-ab96f45b4f5
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414002253-ab96f45b4f5c/go.mod h1:oWD9OrahF06E7ymhZralQIEO4QM0qWCw+W4A8/f+txM=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414212615-c0d3f9292cd0 h1:cNfv22wtyW4P3BV7P7cUcHmc2XrBHfvn9LcnYDRF2d4=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414212615-c0d3f9292cd0/go.mod h1:lMCNLffaUM75IDdO87SkftJy0I65UoHu5GuAIR3MOr4=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414222405-21fff419a457 h1:Ar0wICzD0IwAMqUZ2+7yM5jK7kdO+IkDIF3elqIzW/Y=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414222405-21fff419a457/go.mod h1:ReUe3G+MDGFSDOhWIoUI43H07rxE7YNE+8EwGrWckqY=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
@@ -161,6 +165,7 @@ golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACk
 golang.org/x/net v0.0.0-20180724234803-3673e40ba225/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e h1:bRhVy7zSSasaqNksaRZiA5EEI+Ei4I1nO5Jh72wfHlg=
 golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
+golang.org/x/net v0.0.0-20190613194153-d28f0bde5980 h1:dfGZHvZk057jK2MCeWus/TowKpJ8y4AmooUzdBSR9GU=
 golang.org/x/net v0.0.0-20190613194153-d28f0bde5980/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20190628185345-da137c7871d7 h1:rTIdg5QFRR7XCaK4LCjBiPbx8j4DQRpdYMnGn/bJUEU=
 golang.org/x/net v0.0.0-20190628185345-da137c7871d7/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
