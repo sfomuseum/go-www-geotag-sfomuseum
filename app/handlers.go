@@ -43,12 +43,6 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 	editor_opts := sfomuseum.DefaultEditorOptions()
 	handler = sfomuseum.AppendResourcesHandler(handler, editor_opts)
 
-	handler, err = geotag_app.AppendCrumbHandler(ctx, fs, handler)
-
-	if err != nil {
-		return err
-	}
-
 	mux.Handle(path, handler)
 	return nil
 }

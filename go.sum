@@ -98,6 +98,8 @@ github.com/sfomuseum/go-www-geotag v0.0.0-20200414212401-c0ef531264d8 h1:4UY6Jh5
 github.com/sfomuseum/go-www-geotag v0.0.0-20200414212401-c0ef531264d8/go.mod h1:aAoxI1DCKL2hLtWpzFJZxZnujyDL8OLwW/+uMkdzvNs=
 github.com/sfomuseum/go-www-geotag v0.0.0-20200414222300-e955a66018b9 h1:3iflxeEOG5mXSg6pJeN33jf+vwLG46rxv68iIjmKR7c=
 github.com/sfomuseum/go-www-geotag v0.0.0-20200414222300-e955a66018b9/go.mod h1:aAoxI1DCKL2hLtWpzFJZxZnujyDL8OLwW/+uMkdzvNs=
+github.com/sfomuseum/go-www-geotag v0.0.1 h1:I95RFhrSfzG+b/K+RzY6n6PwkEm47s6bsEqR9HJeI+E=
+github.com/sfomuseum/go-www-geotag v0.0.1/go.mod h1:aAoxI1DCKL2hLtWpzFJZxZnujyDL8OLwW/+uMkdzvNs=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0 h1:2WJvfnv47l9dDyAeGIBt7OI6BZhL7TOQhn1uG5CZOm4=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0/go.mod h1:Q1hictduPTs9xavI/JpwjRvPlmedo72zlAwIZdvDvOY=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413183933-511665158c68 h1:ZvohkvtqTxFkV2X6k4zh9s6ZxcBzxd/z54cbQfgpq7Q=
@@ -112,6 +114,8 @@ github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414212615-c0d3f9292cd
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414212615-c0d3f9292cd0/go.mod h1:lMCNLffaUM75IDdO87SkftJy0I65UoHu5GuAIR3MOr4=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414222405-21fff419a457 h1:Ar0wICzD0IwAMqUZ2+7yM5jK7kdO+IkDIF3elqIzW/Y=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200414222405-21fff419a457/go.mod h1:ReUe3G+MDGFSDOhWIoUI43H07rxE7YNE+8EwGrWckqY=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.1 h1:0OyFisAUBTHfBr/17g77jCMh2ux8l1Cx1XZqC3/rbvM=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.1/go.mod h1:uIUt6kb4nl1V5LjDbgvXt2BPzbRgSh1SkeUA/LehvLE=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
