@@ -120,7 +120,7 @@ func NewWhosOnFirstGeotagWriter(ctx context.Context, uri string) (geotag_writer.
 func (wr *WhosOnFirstGeotagWriter) WriteFeature(ctx context.Context, uri string, geotag_f *geotag.GeotagFeature) error {
 
 	// for local debugging
-	uri = "1511948897"
+	// uri = "1511948897"
 
 	wof_id, uri_args, err := wof_uri.ParseURI(uri)
 
