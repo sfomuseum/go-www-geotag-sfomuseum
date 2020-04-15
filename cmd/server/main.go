@@ -9,7 +9,7 @@ import (
 import (
 	"context"
 	sfom_app "github.com/sfomuseum/go-www-geotag-sfomuseum/app"
-	sfom_flags "github.com/sfomuseum/go-www-geotag-sfomuseum/flags"	
+	sfom_flags "github.com/sfomuseum/go-www-geotag-sfomuseum/flags"
 	"github.com/sfomuseum/go-www-geotag/app"
 	"github.com/sfomuseum/go-www-geotag/flags"
 	"log"
@@ -31,7 +31,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to append SFO Museum flags, %v", err)
 	}
-	
+
 	flags.Parse(fl)
 	fl.Set("enable-map-layers", "true")
 
@@ -66,7 +66,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to append writer handler, %v", err)
 	}
-	
+
 	s, err := app.NewServer(ctx, fl)
 
 	if err != nil {

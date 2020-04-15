@@ -9,10 +9,10 @@ import (
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
 	"github.com/sfomuseum/go-www-geotag/flags"
 	"golang.org/x/oauth2"
+	_ "log"
 	"net/http"
 	"strings"
 	"sync"
-	_ "log"
 )
 
 var oauth2_init sync.Once
