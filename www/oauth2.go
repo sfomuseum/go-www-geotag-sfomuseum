@@ -21,7 +21,7 @@ type OAuth2Options struct {
 	Config       *oauth2.Config
 }
 
-func EnsureOAuth2TokenHandler(opts *OAuth2Options, next http.Handler) (http.Handler, error) {
+func EnsureOAuth2TokenHandler(opts *OAuth2Options, next http.Handler) http.Handler {
 
 	fn := func(rsp http.ResponseWriter, req *http.Request) {
 
@@ -69,7 +69,7 @@ func EnsureOAuth2TokenHandler(opts *OAuth2Options, next http.Handler) (http.Hand
 	}
 
 	h := http.HandlerFunc(fn)
-	return h, nil
+	return h
 }
 
 func OAuth2AuthorizeHandler(opts *OAuth2Options) (http.Handler, error) {

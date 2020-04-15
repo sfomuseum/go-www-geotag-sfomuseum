@@ -17,7 +17,7 @@ import (
 
 var oauth2_init sync.Once
 
-var oauth2_cfg *oauth2.Config
+var oauth2_opts *www.OAuth2Options
 var oauth2_err error
 
 func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
@@ -53,6 +53,14 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 
 	editor_opts := sfomuseum.DefaultEditorOptions()
 	handler = sfomuseum.AppendResourcesHandler(handler, editor_opts)
+
+	opts, err := oauth2OptionsWithFlagSet(ctx, fs)
+
+	if err != nil {
+		return err
+	}
+
+	handler = www.EnsureOAuth2TokenHandler(opts, handler)
 
 	mux.Handle(path, handler)
 	return nil
@@ -101,27 +109,27 @@ func AppendOAuth2HandlersIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *h
 
 func NewOAuth2AuthorizeHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, error) {
 
-	cfg, err := oauth2ConfigWithFlagSet(ctx, fs)
+	opts, err := oauth2OptionsWithFlagSet(ctx, fs)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return www.OAuth2AuthorizeHandler(cfg)
+	return www.OAuth2AuthorizeHandler(opts)
 }
 
 func NewOAuth2TokenHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, error) {
 
-	cfg, err := oauth2ConfigWithFlagSet(ctx, fs)
+	opts, err := oauth2OptionsWithFlagSet(ctx, fs)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return www.OAuth2AccessTokenHandler(cfg)
+	return www.OAuth2AccessTokenHandler(opts)
 }
 
-func oauth2ConfigWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*oauth2.Config, error) {
+func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*www.OAuth2Options, error) {
 
 	oauth2_func := func() {
 
@@ -169,7 +177,7 @@ func oauth2ConfigWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*oauth2.Con
 			return
 		}
 
-		oauth2_cfg = &oauth2.Config{
+		oauth2_cfg := &oauth2.Config{
 			ClientID:     client_id,
 			ClientSecret: client_secret,
 			Scopes:       scopes,
@@ -179,6 +187,11 @@ func oauth2ConfigWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*oauth2.Con
 			},
 			RedirectURL: path_token,
 		}
+
+		oauth2_opts = &www.OAuth2Options{
+			Config: oauth2_cfg,
+			// cookie stuff goes here...
+		}
 	}
 
 	oauth2_init.Do(oauth2_func)
@@ -187,9 +200,9 @@ func oauth2ConfigWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*oauth2.Con
 		return nil, oauth2_err
 	}
 
-	if oauth2_cfg == nil {
+	if oauth2_opts == nil {
 		return nil, errors.New("Failed to construct OAuth2 options")
 	}
 
-	return oauth2_cfg, nil
+	return oauth2_opts, nil
 }
