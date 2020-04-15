@@ -2,7 +2,6 @@ package www
 
 import (
 	"github.com/aaronland/go-http-sanitize"
-	// "github.com/aaronland/go-string/random"
 	"golang.org/x/oauth2"
 	"log"
 	"net/http"
@@ -16,27 +15,25 @@ type OAuth2AccessResponse struct {
 func OAuth2AuthorizeHandler(cfg *oauth2.Config) (http.Handler, error) {
 
 	fn := func(rsp http.ResponseWriter, req *http.Request) {
+		
+		scheme := "http"
 
-		/*
-			rand_opts := random.DefaultOptions()
-			state, err := random.String(rand_opts)
-
-			if err != nil {
-				http.Error(rsp, err.Error(), http.StatusInternalServerError)
-				return
-			}
-		*/
-
+		// because this: https://github.com/golang/go/issues/28940#issuecomment-441749380
+		
+		if req.TLS != nil {
+			scheme = "https"
+		}
+		
 		redir := url.URL{}
-		redir.Scheme = req.URL.Scheme
-		redir.Host = req.URL.Host
+		redir.Scheme = scheme
+		redir.Host = req.Host
 		redir.Path = cfg.RedirectURL
 
-		cfg.RedirectURL = redir.String()
+		redir_url := redir.String()
+		cfg.RedirectURL = redir_url
 
-		auth_url := cfg.AuthCodeURL("state", oauth2.AccessTypeOffline)
-		// auth_url := cfg.AuthCodeURL("state", state)
-
+		auth_url := cfg.AuthCodeURL("state", oauth2.AccessTypeOnline)
+		
 		http.Redirect(rsp, req, auth_url, http.StatusSeeOther)
 		return
 	}
@@ -49,16 +46,21 @@ func OAuth2AccessTokenHandler(cfg *oauth2.Config) (http.Handler, error) {
 
 	fn := func(rsp http.ResponseWriter, req *http.Request) {
 
-		code, err := sanitize.PostString(req, "code")
+		code, err := sanitize.GetString(req, "code")
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)
 			return
 		}
 
+		if code == "" {
+			http.Error(rsp, "Missing code", http.StatusBadRequest)
+			return
+		}
+		
 		ctx := req.Context()
 
-		tok, err := cfg.Exchange(ctx, code)
+		tok, err := cfg.Exchange(ctx, code, oauth2.AccessTypeOnline)
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)

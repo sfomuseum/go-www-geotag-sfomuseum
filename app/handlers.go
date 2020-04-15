@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"strings"
 	"sync"
+	_ "log"
 )
 
 var oauth2_init sync.Once
@@ -59,7 +60,7 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 
 func AppendOAuth2HandlersIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
 
-	enabled, err := flags.BoolVar(fs, "oauth2-enabled")
+	enabled, err := flags.BoolVar(fs, "enable-oauth2")
 
 	if err != nil {
 		return err

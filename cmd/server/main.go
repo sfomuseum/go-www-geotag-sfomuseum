@@ -61,6 +61,12 @@ func main() {
 		log.Fatalf("Failed to append writer handler, %v", err)
 	}
 
+	err = sfom_app.AppendOAuth2HandlersIfEnabled(ctx, fl, mux)
+
+	if err != nil {
+		log.Fatalf("Failed to append writer handler, %v", err)
+	}
+	
 	s, err := app.NewServer(ctx, fl)
 
 	if err != nil {

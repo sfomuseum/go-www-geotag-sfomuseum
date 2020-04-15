@@ -9,7 +9,7 @@ func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
 	fs.Bool("enable-oauth2", false, "...")
 
 	fs.String("oauth2-client-id", "", "...")
-	fs.String("oauth2-secret-id", "", "...")
+	fs.String("oauth2-client-secret", "", "...")
 
 	fs.String("oauth2-scopes", "", "...")
 
