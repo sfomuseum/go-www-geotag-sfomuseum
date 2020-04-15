@@ -5,8 +5,8 @@ go 1.12
 require (
 	github.com/aaronland/go-http-rewrite v0.0.4
 	github.com/aaronland/go-http-sanitize v0.0.1
-	github.com/aaronland/go-string v0.1.1
-	github.com/jtacoma/uritemplates v1.0.0
+	github.com/aaronland/go-string v0.1.1 // indirect
+	github.com/jtacoma/uritemplates v1.0.0 // indirect
 	github.com/sfomuseum/go-www-geotag v0.0.1
 	github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.1
 	github.com/whosonfirst/go-bindata v0.1.0
