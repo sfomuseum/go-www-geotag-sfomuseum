@@ -4,6 +4,9 @@ import (
 	"context"
 	"errors"
 	"flag"
+	"fmt"
+	"github.com/aaronland/go-string/dsn"
+	"github.com/aaronland/go-string/random"
 	"github.com/sfomuseum/go-www-geotag-sfomuseum"
 	"github.com/sfomuseum/go-www-geotag-sfomuseum/www"
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
@@ -188,9 +191,49 @@ func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*www.OAuth
 			RedirectURL: path_token,
 		}
 
+		cookie_dsn, err := flags.StringVar(fs, "oauth2-cookie-dsn")
+
+		if err != nil {
+			oauth2_err = err
+			return
+		}
+
+		if cookie_dsn == "debug" {
+
+			r_opts := random.DefaultOptions()
+			r_opts.AlphaNumeric = true
+
+			name := "t"
+
+			secret, err := random.String(r_opts)
+
+			if err != nil {
+				oauth2_err = err
+				return
+			}
+
+			salt, err := random.String(r_opts)
+
+			if err != nil {
+				oauth2_err = err
+				return
+			}
+
+			cookie_dsn = fmt.Sprintf("name=%s secret=%s salt=%s", name, secret, salt)
+		}
+
+		cookie_map, err := dsn.StringToDSNWithKeys(cookie_dsn, "name", "secret", "salt")
+
+		if err != nil {
+			oauth2_err = err
+			return
+		}
+
 		oauth2_opts = &www.OAuth2Options{
-			Config: oauth2_cfg,
-			// cookie stuff goes here...
+			Config:       oauth2_cfg,
+			CookieName:   cookie_map["name"],
+			CookieSecret: cookie_map["secret"],
+			CookieSalt:   cookie_map["salt"],
 		}
 	}
 

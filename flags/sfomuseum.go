@@ -19,5 +19,7 @@ func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
 	fs.String("oauth2-auth-url", "https://github.com/login/oauth/authorize", "...")
 	fs.String("oauth2-token-url", "https://github.com/login/oauth/access_token", "...")
 
+	fs.String("oauth2-cookie-dsn", "", "...")
+
 	return nil
 }
