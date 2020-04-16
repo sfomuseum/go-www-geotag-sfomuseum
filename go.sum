@@ -70,6 +70,8 @@ github.com/paulmach/orb v0.1.6/go.mod h1:pPwxxs3zoAyosNSbNKn1jiXV2+oovRDObDKfTvR
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=
+github.com/sfomuseum/go-flags v0.0.0-20200416180755-b77d83edf7f9 h1:9fAYKZ+t6mUUZAEj/A61To7cPhTu01pUBIF2v3mdCx4=
+github.com/sfomuseum/go-flags v0.0.0-20200416180755-b77d83edf7f9/go.mod h1:54KCZIGmvZkIOrSCHSNMvgSTKH2gJRJyISH+AiI+55w=
 github.com/sfomuseum/go-geojson-geotag v0.0.1 h1:tdcP9EIWHWbyQpsUuI2KMQdCY+NIMslaEJ78zTqw/w4=
 github.com/sfomuseum/go-geojson-geotag v0.0.1/go.mod h1:KC3HmXH9Aws5v5iPzCukiNGUlLfHITZAqFVLqvi2COg=
 github.com/sfomuseum/go-geojson-geotag v0.0.2 h1:2BOfA+0TWldxPewzxrjHgR7q6gYEEE4fhYZ6JURwS68=
@@ -84,6 +86,8 @@ github.com/sfomuseum/go-http-leaflet-layers v0.0.0-20200414210451-02713825ca94 h
 github.com/sfomuseum/go-http-leaflet-layers v0.0.0-20200414210451-02713825ca94/go.mod h1:y44/bRbzZikkm26+0exD2nkJ8SGsOpQmXT1NM/R58iE=
 github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583 h1:HIpEokIRUrLd1PMU9DnifrkTU04PDwVATuRhmmdF4Lc=
 github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583/go.mod h1:EgBwnmKjgwnPaj0KXtjewc4dUCS+1neOdMewpiAO33g=
+github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416181454-f57181a2b3de h1:P8qS0I4u+tjxG0DE2Bx3et9a5apvbmgZW50BPvKXXaM=
+github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416181454-f57181a2b3de/go.mod h1:VhUsb9rby9P8ttMwkUajmSm3aO69YQnDzZCFk0To64w=
 github.com/sfomuseum/go-http-tilezen v0.0.4 h1:VtgK1o0e4orgLthumMLZ3NcZHHJakixRMPphmSGiKDQ=
 github.com/sfomuseum/go-http-tilezen v0.0.4/go.mod h1:3KWUDN2cHiSWjRaI4wrt5FKa/EEsNcsOeh5GIgWTrBw=
 github.com/sfomuseum/go-tilezen v0.0.3 h1:B6BSBHTtno1MvtTMyNRhIK+MMaBQOml0AFoz+Uw8u5o=
