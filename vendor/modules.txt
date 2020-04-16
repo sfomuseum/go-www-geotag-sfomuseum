@@ -15,7 +15,7 @@ github.com/aaronland/go-http-crumb
 github.com/aaronland/go-http-leaflet
 # github.com/aaronland/go-http-rewrite v0.0.4
 github.com/aaronland/go-http-rewrite
-# github.com/aaronland/go-http-sanitize v0.0.1
+# github.com/aaronland/go-http-sanitize v0.0.4
 github.com/aaronland/go-http-sanitize
 # github.com/aaronland/go-http-server v0.0.0-20200406192045-de2f431abc6e
 github.com/aaronland/go-http-server
@@ -66,6 +66,9 @@ github.com/sfomuseum/go-geojson-geotag
 github.com/sfomuseum/go-http-leaflet-geotag
 # github.com/sfomuseum/go-http-leaflet-layers v0.0.0-20200414210451-02713825ca94
 github.com/sfomuseum/go-http-leaflet-layers
+# github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583
+github.com/sfomuseum/go-http-oauth2/flags
+github.com/sfomuseum/go-http-oauth2/www
 # github.com/sfomuseum/go-http-tilezen v0.0.4
 github.com/sfomuseum/go-http-tilezen/http
 # github.com/sfomuseum/go-tilezen v0.0.3

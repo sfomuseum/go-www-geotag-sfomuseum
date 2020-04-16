@@ -20,6 +20,8 @@ github.com/aaronland/go-http-rewrite v0.0.4 h1:lI8cDF/nINjuSPrYpwvlJLa1cC32h1nvm
 github.com/aaronland/go-http-rewrite v0.0.4/go.mod h1:g62jjXpsArD0lzJLs9bVLR9Locdt3f4OmqFkkJL2rQU=
 github.com/aaronland/go-http-sanitize v0.0.1 h1:35rmeJh9Kx9mphGJXitQ6dOsC2fEPdn9sJa6JpYPd/c=
 github.com/aaronland/go-http-sanitize v0.0.1/go.mod h1:qUi4rzUPcpMntpUFnHK00yQI5vd/Q7x9MFYwX91/ygI=
+github.com/aaronland/go-http-sanitize v0.0.4 h1:oAYe5DbtbDS6x5Rygv5II6fDHzATGIAyY4/ZDZ63G2w=
+github.com/aaronland/go-http-sanitize v0.0.4/go.mod h1:qUi4rzUPcpMntpUFnHK00yQI5vd/Q7x9MFYwX91/ygI=
 github.com/aaronland/go-http-server v0.0.0-20200406192045-de2f431abc6e h1:INXG9QbT9VzBS7k94MFRjbiCGXV87lMKJHwWXeMOOE8=
 github.com/aaronland/go-http-server v0.0.0-20200406192045-de2f431abc6e/go.mod h1:aLVlx8l+Tzrv1YmEDKKeomUj5vWzUfrbC1QB6WUxzN0=
 github.com/aaronland/go-http-tangramjs v0.0.6 h1:Ke2hU/flaO6hmK4AxH6ubKIEtqKItowqaWe4IA/3aFU=
@@ -80,6 +82,8 @@ github.com/sfomuseum/go-http-leaflet-geotag v1.0.0 h1:LGW8CpUhwkQ7+4DewziLI5ueF1
 github.com/sfomuseum/go-http-leaflet-geotag v1.0.0/go.mod h1:R56pMAP2OHurz+bDFkYL3RgISj/SQw2mbgTmL9FZ8WQ=
 github.com/sfomuseum/go-http-leaflet-layers v0.0.0-20200414210451-02713825ca94 h1:5xUNau9W+JYKE3ZLo/VgavjX3bNiqUO4gQPgqAVkj7c=
 github.com/sfomuseum/go-http-leaflet-layers v0.0.0-20200414210451-02713825ca94/go.mod h1:y44/bRbzZikkm26+0exD2nkJ8SGsOpQmXT1NM/R58iE=
+github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583 h1:HIpEokIRUrLd1PMU9DnifrkTU04PDwVATuRhmmdF4Lc=
+github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583/go.mod h1:EgBwnmKjgwnPaj0KXtjewc4dUCS+1neOdMewpiAO33g=
 github.com/sfomuseum/go-http-tilezen v0.0.4 h1:VtgK1o0e4orgLthumMLZ3NcZHHJakixRMPphmSGiKDQ=
 github.com/sfomuseum/go-http-tilezen v0.0.4/go.mod h1:3KWUDN2cHiSWjRaI4wrt5FKa/EEsNcsOeh5GIgWTrBw=
 github.com/sfomuseum/go-tilezen v0.0.3 h1:B6BSBHTtno1MvtTMyNRhIK+MMaBQOml0AFoz+Uw8u5o=

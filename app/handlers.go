@@ -8,8 +8,8 @@ import (
 	"github.com/aaronland/go-http-crumb"
 	"github.com/aaronland/go-string/dsn"
 	"github.com/aaronland/go-string/random"
+	oauth2_www "github.com/sfomuseum/go-http-oauth2/www"
 	"github.com/sfomuseum/go-www-geotag-sfomuseum"
-	"github.com/sfomuseum/go-www-geotag-sfomuseum/www"
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
 	"github.com/sfomuseum/go-www-geotag/flags"
 	"golang.org/x/oauth2"
@@ -21,7 +21,7 @@ import (
 
 var oauth2_init sync.Once
 
-var oauth2_opts *www.OAuth2Options
+var oauth2_opts *oauth2_www.OAuth2Options
 var oauth2_err error
 
 func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
@@ -64,7 +64,7 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 		return err
 	}
 
-	handler = www.EnsureOAuth2TokenHandler(opts, handler)
+	handler = oauth2_www.EnsureOAuth2TokenHandler(opts, handler)
 
 	mux.Handle(path, handler)
 	return nil
@@ -119,7 +119,7 @@ func NewOAuth2AuthorizeHandler(ctx context.Context, fs *flag.FlagSet) (http.Hand
 		return nil, err
 	}
 
-	return www.OAuth2AuthorizeHandler(opts)
+	return oauth2_www.OAuth2AuthorizeHandler(opts)
 }
 
 func NewOAuth2TokenHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, error) {
@@ -130,10 +130,10 @@ func NewOAuth2TokenHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler,
 		return nil, err
 	}
 
-	return www.OAuth2AccessTokenHandler(opts)
+	return oauth2_www.OAuth2AccessTokenHandler(opts)
 }
 
-func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*www.OAuth2Options, error) {
+func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*oauth2_www.OAuth2Options, error) {
 
 	oauth2_func := func() {
 
@@ -246,7 +246,7 @@ func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*www.OAuth
 			return
 		}
 
-		oauth2_opts = &www.OAuth2Options{
+		oauth2_opts = &oauth2_www.OAuth2Options{
 			Config:       oauth2_cfg,
 			CookieName:   cookie_map["name"],
 			CookieSecret: cookie_map["secret"],

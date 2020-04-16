@@ -19,7 +19,7 @@ import (
 	"github.com/aaronland/go-http-crumb"
 	"github.com/aaronland/go-http-sanitize"
 	"golang.org/x/oauth2"
-	"log"
+	_ "log"
 	"net/http"
 	"net/url"
 )
@@ -107,8 +107,6 @@ func OAuth2AuthorizeHandler(opts *OAuth2Options) (http.Handler, error) {
 			return
 		}
 
-		log.Println("AUTH STATE", state)
-
 		auth_url := cfg.AuthCodeURL(state, oauth2.AccessTypeOnline)
 
 		http.Redirect(rsp, req, auth_url, http.StatusSeeOther)
@@ -143,8 +141,6 @@ func OAuth2AccessTokenHandler(opts *OAuth2Options) (http.Handler, error) {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)
 			return
 		}
-
-		log.Println("TOKEN STATE", state)
 
 		if state == "" {
 			http.Error(rsp, "Missing state", http.StatusBadRequest)

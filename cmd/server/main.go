@@ -33,7 +33,8 @@ func main() {
 	}
 
 	flags.Parse(fl)
-	fl.Set("enable-map-layers", "true")
+
+	sfom_flags.AssignSFOMuseumFlags(fl)
 
 	mux := http.NewServeMux()
 

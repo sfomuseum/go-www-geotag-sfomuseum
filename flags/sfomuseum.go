@@ -2,24 +2,18 @@ package flags
 
 import (
 	"flag"
+	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 )
 
 func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
 
-	fs.Bool("enable-oauth2", false, "...")
+	return oauth2_flags.AppendOAuth2Flags(fs)
+}
 
-	fs.String("oauth2-client-id", "", "...")
-	fs.String("oauth2-client-secret", "", "...")
+func AssignSFOMuseumFlags(fs *flag.FlagSet) {
 
-	fs.String("oauth2-scopes", "", "...")
+	fs.Set("enable-map-layers", "true")
 
-	fs.String("path-oauth2-auth", "/signin/", "...")
-	fs.String("path-oauth2-token", "/auth/", "...")
-
-	fs.String("oauth2-auth-url", "https://github.com/login/oauth/authorize", "...")
-	fs.String("oauth2-token-url", "https://github.com/login/oauth/access_token", "...")
-
-	fs.String("oauth2-cookie-dsn", "", "...")
-
-	return nil
+	fs.Set("oauth2-auth-url", "https://github.com/login/oauth/authorize")
+	fs.Set("oauth2-token-url", "https://github.com/login/oauth/access_token")
 }
