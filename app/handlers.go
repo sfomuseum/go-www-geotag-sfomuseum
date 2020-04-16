@@ -7,6 +7,7 @@ import (
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 	oauth2_www "github.com/sfomuseum/go-http-oauth2/www"
 	"github.com/sfomuseum/go-www-geotag-sfomuseum"
+	"github.com/sfomuseum/go-www-geotag-sfomuseum/api"
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
 	_ "log"
 	"net/http"
@@ -56,6 +57,55 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 
 	mux.Handle(path, handler)
 	return nil
+}
+
+func AppendWriterHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
+
+	path, err := flags.StringVar(fs, "path-writer")
+
+	if err != nil {
+		return err
+	}
+
+	handler, err := NewWriterHandler(ctx, fs)
+
+	if err != nil {
+		return err
+	}
+
+	mux.Handle(path, handler)
+	return nil
+}
+
+func NewWriterHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, error) {
+
+	writer_uri, err := flags.StringVar(fs, "writer-uri")
+
+	if err != nil {
+		return nil, err
+	}
+
+	handler, err := api.WriterHandler(writer_uri)
+
+	if err != nil {
+		return nil, err
+	}
+
+	handler, err = geotag_app.AppendCrumbHandler(ctx, fs, handler)
+
+	if err != nil {
+		return nil, err
+	}
+
+	opts, err := oauth2_flags.OAuth2OptionsWithFlagSet(ctx, fs)
+
+	if err != nil {
+		return nil, err
+	}
+
+	handler = oauth2_www.EnsureOAuth2TokenHandler(opts, handler)
+
+	return handler, nil
 }
 
 func AppendOAuth2HandlersIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {

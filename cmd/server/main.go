@@ -55,7 +55,7 @@ func main() {
 		log.Fatalf("Failed to append proxy tiles handler, %v", err)
 	}
 
-	err = geotag_app.AppendWriterHandlerIfEnabled(ctx, fl, mux)
+	err = sfom_app.AppendWriterHandler(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append writer handler, %v", err)
@@ -66,11 +66,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to append writer handler, %v", err)
 	}
-
-	// https://letsencrypt.org/docs/certificates-for-localhost/
-	// https://groups.google.com/forum/#!topic/golang-nuts/7NwZDFsXxWg
-	// https://blog.kowalczyk.info/article/Jl3G/https-for-free-in-go-with-little-help-of-lets-encrypt.html
-	// https://godoc.org/golang.org/x/crypto/acme/autocert
 
 	s, err := geotag_app.NewServer(ctx, fl)
 
