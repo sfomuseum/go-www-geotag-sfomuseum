@@ -7,6 +7,8 @@ github.com/aaronland/go-brooklynintegers-api
 # github.com/aaronland/go-http-bootstrap v0.0.5
 github.com/aaronland/go-http-bootstrap
 github.com/aaronland/go-http-bootstrap/resources
+# github.com/aaronland/go-http-cookie v0.0.2
+github.com/aaronland/go-http-cookie
 # github.com/aaronland/go-http-crumb v0.0.5
 github.com/aaronland/go-http-crumb
 # github.com/aaronland/go-http-leaflet v0.0.3
@@ -23,6 +25,8 @@ github.com/aaronland/go-http-tangramjs
 github.com/aaronland/go-pool
 # github.com/aaronland/go-roster v0.0.1
 github.com/aaronland/go-roster
+# github.com/aaronland/go-secretbox v0.1.0
+github.com/aaronland/go-secretbox
 # github.com/aaronland/go-string v0.1.1
 github.com/aaronland/go-string/dsn
 github.com/aaronland/go-string/random
@@ -117,6 +121,13 @@ github.com/whosonfirst/go-whosonfirst-uri
 github.com/whosonfirst/go-writer
 # github.com/whosonfirst/go-writer-github v0.0.2
 github.com/whosonfirst/go-writer-github
+# golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
+golang.org/x/crypto/internal/subtle
+golang.org/x/crypto/nacl/secretbox
+golang.org/x/crypto/pbkdf2
+golang.org/x/crypto/poly1305
+golang.org/x/crypto/salsa20/salsa
+golang.org/x/crypto/scrypt
 # golang.org/x/net v0.0.0-20190628185345-da137c7871d7
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
@@ -125,6 +136,9 @@ golang.org/x/net/html/atom
 # golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 golang.org/x/oauth2
 golang.org/x/oauth2/internal
+# golang.org/x/sys v0.0.0-20190412213103-97732733099d
+golang.org/x/sys/cpu
+golang.org/x/sys/unix
 # google.golang.org/appengine v1.4.0
 google.golang.org/appengine/internal
 google.golang.org/appengine/internal/base

@@ -39,6 +39,8 @@ func EnsureOAuth2TokenHandler(opts *OAuth2Options, next http.Handler) http.Handl
 			return
 		}
 
+		// set internal redirect URL here...
+
 		if err != nil {
 			http.Redirect(rsp, req, opts.Config.RedirectURL, 303)
 			return
@@ -145,14 +147,25 @@ func OAuth2AccessTokenHandler(opts *OAuth2Options) (http.Handler, error) {
 		}
 
 		str_token := string(enc_token)
-		err = ck.Set(rsp, str_token)
+
+		http_cookie := &http.Cookie{
+			Value:    str_token,
+			SameSite: http.SameSiteStrictMode,
+			Expires:  tok.Expiry,
+		}
+
+		err = ck.SetCookie(rsp, http_cookie)
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
-		log.Println("REDIRECT HERE")
+		// get internal redirect URL here... (see above)
+
+		redir_url := "/"
+
+		http.Redirect(rsp, req, redir_url, 303)
 		return
 	}
 
