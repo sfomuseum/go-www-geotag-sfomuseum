@@ -6,7 +6,7 @@ import (
 	"github.com/aaronland/go-http-cookie"
 	"github.com/aaronland/go-http-sanitize"
 	"golang.org/x/oauth2"
-	"log"
+	_ "log"
 	"net/http"
 	"net/url"
 )
@@ -111,7 +111,7 @@ func OAuth2AccessTokenHandler(opts *OAuth2Options) (http.Handler, error) {
 	fn := func(rsp http.ResponseWriter, req *http.Request) {
 
 		cfg := opts.Config
-		code, err := sanitize.GetString(req, "code")
+		code, err := sanitize.PostString(req, "code")
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)

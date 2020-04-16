@@ -70,7 +70,8 @@ func main() {
 	// https://letsencrypt.org/docs/certificates-for-localhost/
 	// https://groups.google.com/forum/#!topic/golang-nuts/7NwZDFsXxWg
 	// https://blog.kowalczyk.info/article/Jl3G/https-for-free-in-go-with-little-help-of-lets-encrypt.html
-
+	// https://godoc.org/golang.org/x/crypto/acme/autocert
+	
 	s, err := app.NewServer(ctx, fl)
 
 	if err != nil {
