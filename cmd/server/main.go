@@ -10,9 +10,7 @@ import (
 	"context"
 	"github.com/sfomuseum/go-flags"
 	sfom_app "github.com/sfomuseum/go-www-geotag-sfomuseum/app"
-	sfom_flags "github.com/sfomuseum/go-www-geotag-sfomuseum/flags"
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
-	geotag_flags "github.com/sfomuseum/go-www-geotag/flags"
 	"log"
 	"net/http"
 )
@@ -21,13 +19,13 @@ func main() {
 
 	ctx := context.Background()
 
-	fl, err := geotag_flags.CommonFlags()
+	fl, err := geotag_app.CommonFlags()
 
 	if err != nil {
 		log.Fatalf("Failed to instantiate common flags, %v", err)
 	}
 
-	err = sfom_flags.AppendSFOMuseumFlags(fl)
+	err = sfom_app.AppendSFOMuseumFlags(fl)
 
 	if err != nil {
 		log.Fatalf("Failed to append SFO Museum flags, %v", err)
@@ -35,7 +33,7 @@ func main() {
 
 	flags.Parse(fl)
 
-	sfom_flags.AssignSFOMuseumFlags(fl)
+	sfom_app.AssignSFOMuseumFlags(fl)
 
 	mux := http.NewServeMux()
 
@@ -82,7 +80,7 @@ func main() {
 
 	log.Printf("Listening on %s", s.Address())
 
-	err = s.ListenAndServe(mux)
+	err = s.ListenAndServe(ctx, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to start server, %v", err)
