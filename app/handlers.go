@@ -6,8 +6,8 @@ import (
 	"github.com/sfomuseum/go-flags"
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 	oauth2_www "github.com/sfomuseum/go-http-oauth2/www"
-	"github.com/sfomuseum/go-www-geotag-sfomuseum"
-	"github.com/sfomuseum/go-www-geotag-sfomuseum/api"
+	sfom_api "github.com/sfomuseum/go-www-geotag-sfomuseum/api"
+	sfom_www "github.com/sfomuseum/go-www-geotag-sfomuseum/www"
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
 	_ "log"
 	"net/http"
@@ -21,7 +21,7 @@ func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 		return err
 	}
 
-	err = sfomuseum.AppendAssetHandlers(mux)
+	err = sfom_www.AppendAssetHandlers(mux)
 
 	if err != nil {
 		return err
@@ -44,8 +44,8 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 		return err
 	}
 
-	editor_opts := sfomuseum.DefaultEditorOptions()
-	handler = sfomuseum.AppendResourcesHandler(handler, editor_opts)
+	editor_opts := sfom_www.DefaultEditorOptions()
+	handler = sfom_www.AppendResourcesHandler(handler, editor_opts)
 
 	opts, err := oauth2_flags.OAuth2OptionsWithFlagSet(ctx, fs)
 
@@ -85,7 +85,7 @@ func NewWriterHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
-	handler, err := api.WriterHandler(writer_uri)
+	handler, err := sfom_api.WriterHandler(writer_uri)
 
 	if err != nil {
 		return nil, err
