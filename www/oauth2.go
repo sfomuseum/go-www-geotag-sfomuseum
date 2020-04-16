@@ -1,9 +1,22 @@
 package www
 
+/*
+
+mmmmm....aybe? (20200416/thisisaaronland)
+
+type Authenticator interface {
+	SigninHandler() http.Handler
+	SignoutHandler() http.Handler
+	ValidateHandler() http.Handler
+}
+
+*/
+
 import (
 	"context"
 	"encoding/json"
 	"github.com/aaronland/go-http-cookie"
+	"github.com/aaronland/go-http-crumb"
 	"github.com/aaronland/go-http-sanitize"
 	"golang.org/x/oauth2"
 	"log"
@@ -19,6 +32,8 @@ type OAuth2Options struct {
 	CookieSecret string
 	CookieSalt   string
 	Config       *oauth2.Config
+	SigninCrumb  *crumb.CrumbConfig
+	SignoutCrumb *crumb.CrumbConfig
 }
 
 func EnsureOAuth2TokenHandler(opts *OAuth2Options, next http.Handler) http.Handler {
@@ -85,11 +100,17 @@ func OAuth2AuthorizeHandler(opts *OAuth2Options) (http.Handler, error) {
 		redir_url := redir.String()
 		cfg.RedirectURL = redir_url
 
-		log.Println(redir_url)
+		state, err := crumb.GenerateCrumb(opts.SigninCrumb, req)
 
-		auth_url := cfg.AuthCodeURL("state", oauth2.AccessTypeOnline)
+		if err != nil {
+			http.Error(rsp, err.Error(), http.StatusInternalServerError)
+			return
+		}
 
-		log.Println(auth_url)
+		log.Println("AUTH STATE", state)
+
+		auth_url := cfg.AuthCodeURL(state, oauth2.AccessTypeOnline)
+
 		http.Redirect(rsp, req, auth_url, http.StatusSeeOther)
 		return
 	}
@@ -104,9 +125,40 @@ func OAuth2AccessTokenHandler(opts *OAuth2Options) (http.Handler, error) {
 
 		cfg := opts.Config
 
-		code, err := RequestString(req, "code")
+		code, err := StringParamFromRequest(req, "code")
 
 		if err != nil {
+			http.Error(rsp, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		if code == "" {
+			http.Error(rsp, "Missing code", http.StatusBadRequest)
+			return
+		}
+
+		state, err := StringParamFromRequest(req, "state")
+
+		if err != nil {
+			http.Error(rsp, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		log.Println("TOKEN STATE", state)
+
+		if state == "" {
+			http.Error(rsp, "Missing state", http.StatusBadRequest)
+			return
+		}
+
+		ok, err := crumb.ValidateCrumb(opts.SigninCrumb, req, state)
+
+		if err != nil {
+			http.Error(rsp, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if !ok {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)
 			return
 		}
@@ -139,9 +191,63 @@ func OAuth2AccessTokenHandler(opts *OAuth2Options) (http.Handler, error) {
 	return h, nil
 }
 
+// this is not ready for use yet - I still need to think through how/where
+// the signout crumb is set in actual HTML pages(20200416/thisisaaronland)
+
+func OAuth2RemoveAccessTokenHandler(opts *OAuth2Options) (http.Handler, error) {
+
+	fn := func(rsp http.ResponseWriter, req *http.Request) {
+
+		token, err := GetTokenFromCookie(opts, req)
+
+		if err != nil && err != http.ErrNoCookie {
+			http.Error(rsp, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if token != nil {
+
+			crumb_var, err := sanitize.GetString(req, "crumb")
+
+			if err != nil {
+				http.Error(rsp, err.Error(), http.StatusInternalServerError)
+				return
+			}
+
+			ok, err := crumb.ValidateCrumb(opts.SignoutCrumb, req, crumb_var)
+
+			if err != nil {
+				http.Error(rsp, err.Error(), http.StatusInternalServerError)
+				return
+			}
+
+			if !ok {
+				http.Error(rsp, err.Error(), http.StatusBadRequest)
+				return
+			}
+
+			err = UnsetTokenCookie(opts, rsp)
+
+			if err != nil {
+				http.Error(rsp, err.Error(), http.StatusInternalServerError)
+				return
+			}
+		}
+
+		// this will cause an infinite loop because / is currently configured
+		// as the editor page (20200416/thisisaaronland)
+
+		http.Redirect(rsp, req, "/", 303)
+		return
+	}
+
+	h := http.HandlerFunc(fn)
+	return h, nil
+}
+
 func GetTokenFromCookie(opts *OAuth2Options, req *http.Request) (*oauth2.Token, error) {
 
-	ck, err := cookie.NewAuthCookie(opts.CookieName, opts.CookieSecret, opts.CookieSalt)
+	ck, err := NewTokenCookie(opts)
 
 	if err != nil {
 		return nil, err
@@ -170,7 +276,7 @@ func GetTokenFromCookie(opts *OAuth2Options, req *http.Request) (*oauth2.Token, 
 
 func SetCookieWithToken(opts *OAuth2Options, rsp http.ResponseWriter, tok *oauth2.Token) error {
 
-	ck, err := cookie.NewAuthCookie(opts.CookieName, opts.CookieSecret, opts.CookieSalt)
+	ck, err := NewTokenCookie(opts)
 
 	if err != nil {
 		return err
@@ -189,12 +295,27 @@ func SetCookieWithToken(opts *OAuth2Options, rsp http.ResponseWriter, tok *oauth
 	http_cookie := &http.Cookie{
 		Value:    str_token,
 		SameSite: http.SameSiteLaxMode,
-		// SameSite: http.SameSiteDefaultMode,
+		// SameSite: http.SameSiteStrictMode,	// I can not make this work... (20200416/thisisaaronland)
 		Expires: tok.Expiry,
 		Path:    "/",
 	}
 
 	return ck.SetCookie(rsp, http_cookie)
+}
+
+func UnsetTokenCookie(opts *OAuth2Options, rsp http.ResponseWriter) error {
+
+	ck, err := NewTokenCookie(opts)
+
+	if err != nil {
+		return err
+	}
+
+	return ck.Delete(rsp)
+}
+
+func NewTokenCookie(opts *OAuth2Options) (cookie.Cookie, error) {
+	return cookie.NewAuthCookie(opts.CookieName, opts.CookieSecret, opts.CookieSalt)
 }
 
 func SetTokenContext(req *http.Request, token *oauth2.Token) (*http.Request, error) {
@@ -218,7 +339,9 @@ func GetTokenContext(req *http.Request) (*oauth2.Token, error) {
 	return token, nil
 }
 
-func RequestString(req *http.Request, param string) (string, error) {
+// please put this in go-http-sanitize (20200416/thisisaaronland)
+
+func StringParamFromRequest(req *http.Request, param string) (string, error) {
 
 	value, err := sanitize.PostString(req, param)
 

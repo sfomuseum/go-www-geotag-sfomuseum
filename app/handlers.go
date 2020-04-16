@@ -5,6 +5,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"github.com/aaronland/go-http-crumb"
 	"github.com/aaronland/go-string/dsn"
 	"github.com/aaronland/go-string/random"
 	"github.com/sfomuseum/go-www-geotag-sfomuseum"
@@ -229,11 +230,29 @@ func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*www.OAuth
 			return
 		}
 
+		signin_crumb, err := NewOAuth2CrumbConfig("signin", 120)
+
+		if err != nil {
+			oauth2_err = err
+			return
+		}
+
+		// not sure about this (20204016/thisisaaronland)
+
+		signout_crumb, err := NewOAuth2CrumbConfig("signout", 3600)
+
+		if err != nil {
+			oauth2_err = err
+			return
+		}
+
 		oauth2_opts = &www.OAuth2Options{
 			Config:       oauth2_cfg,
 			CookieName:   cookie_map["name"],
 			CookieSecret: cookie_map["secret"],
 			CookieSalt:   cookie_map["salt"],
+			SigninCrumb:  signin_crumb,
+			SignoutCrumb: signout_crumb,
 		}
 	}
 
@@ -248,4 +267,35 @@ func oauth2OptionsWithFlagSet(ctx context.Context, fs *flag.FlagSet) (*www.OAuth
 	}
 
 	return oauth2_opts, nil
+}
+
+func NewOAuth2CrumbConfig(key string, ttl int64) (*crumb.CrumbConfig, error) {
+
+	r_opts := random.DefaultOptions()
+	r_opts.AlphaNumeric = true
+
+	secret, err := random.String(r_opts)
+
+	if err != nil {
+		return nil, err
+	}
+
+	r_opts.Length = 8
+	extra, err := random.String(r_opts)
+
+	if err != nil {
+		return nil, err
+	}
+
+	separator := ":"
+
+	cfg := &crumb.CrumbConfig{
+		Extra:     extra,
+		Separator: separator,
+		Secret:    secret,
+		TTL:       ttl,
+		Key:       key,
+	}
+
+	return cfg, nil
 }
