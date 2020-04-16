@@ -8,10 +8,11 @@ import (
 
 import (
 	"context"
+	"github.com/sfomuseum/go-flags"
 	sfom_app "github.com/sfomuseum/go-www-geotag-sfomuseum/app"
 	sfom_flags "github.com/sfomuseum/go-www-geotag-sfomuseum/flags"
-	"github.com/sfomuseum/go-www-geotag/app"
-	"github.com/sfomuseum/go-www-geotag/flags"
+	geotag_app "github.com/sfomuseum/go-www-geotag/app"
+	geotag_flags "github.com/sfomuseum/go-www-geotag/flags"
 	"log"
 	"net/http"
 )
@@ -20,7 +21,7 @@ func main() {
 
 	ctx := context.Background()
 
-	fl, err := flags.CommonFlags()
+	fl, err := geotag_flags.CommonFlags()
 
 	if err != nil {
 		log.Fatalf("Failed to instantiate common flags, %v", err)
@@ -50,13 +51,13 @@ func main() {
 		log.Fatalf("Failed to append editor handler, %v", err)
 	}
 
-	err = app.AppendProxyTilesHandlerIfEnabled(ctx, fl, mux)
+	err = geotag_app.AppendProxyTilesHandlerIfEnabled(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append proxy tiles handler, %v", err)
 	}
 
-	err = app.AppendWriterHandlerIfEnabled(ctx, fl, mux)
+	err = geotag_app.AppendWriterHandlerIfEnabled(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append writer handler, %v", err)
@@ -73,7 +74,7 @@ func main() {
 	// https://blog.kowalczyk.info/article/Jl3G/https-for-free-in-go-with-little-help-of-lets-encrypt.html
 	// https://godoc.org/golang.org/x/crypto/acme/autocert
 
-	s, err := app.NewServer(ctx, fl)
+	s, err := geotag_app.NewServer(ctx, fl)
 
 	if err != nil {
 		log.Fatalf("Failed to create application server, %v", err)
