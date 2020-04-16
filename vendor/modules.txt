@@ -83,7 +83,7 @@ github.com/sfomuseum/go-www-geotag/assets/templates
 github.com/sfomuseum/go-www-geotag/geo
 github.com/sfomuseum/go-www-geotag/writer
 github.com/sfomuseum/go-www-geotag/www
-# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.2
+# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.3
 github.com/sfomuseum/go-www-geotag-whosonfirst/writer
 # github.com/tidwall/gjson v1.6.0
 github.com/tidwall/gjson
