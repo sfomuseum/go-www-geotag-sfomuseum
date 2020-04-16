@@ -68,7 +68,7 @@ github.com/sfomuseum/go-geojson-geotag
 github.com/sfomuseum/go-http-leaflet-geotag
 # github.com/sfomuseum/go-http-leaflet-layers v0.0.0-20200414210451-02713825ca94
 github.com/sfomuseum/go-http-leaflet-layers
-# github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416181454-f57181a2b3de
+# github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416213837-779cd7a2fb75
 github.com/sfomuseum/go-http-oauth2
 github.com/sfomuseum/go-http-oauth2/flags
 github.com/sfomuseum/go-http-oauth2/www

@@ -6,6 +6,7 @@ import (
 	"github.com/sfomuseum/go-www-geotag/writer"
 	"net/http"
 	"strings"
+	"log"
 )
 
 func WriterHandler(wr_uri string) (http.Handler, error) {
@@ -31,8 +32,13 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 			return
 		}
 
+		log.Println(wr_uri)
+		log.Println(token.AccessToken)
+		
 		wr_uri = strings.Replace(wr_uri, "{access_token}", token.AccessToken, -1)
 
+		log.Println("BOOP", wr_uri)
+		
 		wr, err := writer.NewWriter(ctx, wr_uri)
 
 		if err != nil {
