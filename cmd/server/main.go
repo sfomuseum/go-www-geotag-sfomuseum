@@ -38,7 +38,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to set flags from env vars, %v", err)
 	}
-	
+
 	sfom_app.AssignSFOMuseumFlags(fl)
 
 	mux := http.NewServeMux()

@@ -53,7 +53,7 @@ func AppendEditorHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 		return err
 	}
 
-	handler = oauth2_www.EnsureOAuth2TokenHandler(opts, handler)
+	handler = oauth2_www.EnsureOAuth2TokenCookieHandler(opts, handler)
 
 	mux.Handle(path, handler)
 	return nil
@@ -103,7 +103,7 @@ func NewWriterHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
-	handler = oauth2_www.EnsureOAuth2TokenHandler(opts, handler)
+	handler = oauth2_www.EnsureOAuth2TokenCookieHandler(opts, handler)
 
 	return handler, nil
 }
@@ -157,7 +157,7 @@ func NewOAuth2AuthorizeHandler(ctx context.Context, fs *flag.FlagSet) (http.Hand
 		return nil, err
 	}
 
-	return oauth2_www.OAuth2AuthorizeHandler(opts)
+	return oauth2_www.OAuth2TokenCookieAuthorizeHandler(opts)
 }
 
 func NewOAuth2TokenHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, error) {
@@ -168,5 +168,5 @@ func NewOAuth2TokenHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler,
 		return nil, err
 	}
 
-	return oauth2_www.OAuth2AccessTokenHandler(opts)
+	return oauth2_www.OAuth2AccessTokenCookieHandler(opts)
 }

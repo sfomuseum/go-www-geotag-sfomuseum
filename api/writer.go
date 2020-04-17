@@ -27,7 +27,7 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 
 		ctx := req.Context()
 
-		token, err := oauth2_www.GetTokenContext(req)
+		token, err := oauth2_www.GetOAuth2TokenContext(req)
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)

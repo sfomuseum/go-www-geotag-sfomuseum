@@ -6,11 +6,9 @@ import (
 )
 
 type Options struct {
-	AuthURL      string
-	CookieName   string
-	CookieSecret string
-	CookieSalt   string
-	Config       *oauth2.Config
-	AuthCrumb    *crumb.CrumbConfig
-	UnAuthCrumb  *crumb.CrumbConfig
+	AuthURL     string
+	CookieURI   string
+	Config      *oauth2.Config
+	AuthCrumb   crumb.Crumb
+	UnAuthCrumb crumb.Crumb
 }
