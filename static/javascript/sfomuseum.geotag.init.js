@@ -1,9 +1,5 @@
 window.addEventListener("load", function load(event){
 
-    console.log("HELLO");
-    
-    console.log("WORLD");
-    
     var map = geotag.maps.getMapById("map");
 
     if (! map){
@@ -16,4 +12,22 @@ window.addEventListener("load", function load(event){
     });
 
     map.addControl(layers_control);
+
+    // https://stackoverflow.com/questions/50229935/wkwebview-get-javascript-errors
+
+    window.onerror = (msg, url, line, column, error) => {
+	const message = {
+	    message: msg,
+	    url: url,
+	    line: line,
+	    column: column,
+	    error: JSON.stringify(error)
+	}
+	
+	if (window.webkit) {
+	    window.webkit.messageHandlers.error.postMessage(message);
+	} else {
+	    console.log("Error:", message);
+	}
+    };
 });

@@ -33,7 +33,7 @@ func main() {
 
 	flags.Parse(fl)
 
-	err = flags.SetFlagsFromEnvVars(fl, "GEOTAG")
+	err = flags.SetFlagsFromEnvVarsWithFeedback(fl, "GEOTAG", true)
 
 	if err != nil {
 		log.Fatalf("Failed to set flags from env vars, %v", err)
