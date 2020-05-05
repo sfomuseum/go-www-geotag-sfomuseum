@@ -7,7 +7,7 @@ github.com/aaronland/go-brooklynintegers-api
 # github.com/aaronland/go-http-bootstrap v0.0.5
 github.com/aaronland/go-http-bootstrap
 github.com/aaronland/go-http-bootstrap/resources
-# github.com/aaronland/go-http-cookie v0.3.1
+# github.com/aaronland/go-http-cookie v0.3.2
 github.com/aaronland/go-http-cookie
 # github.com/aaronland/go-http-crumb v0.1.0
 github.com/aaronland/go-http-crumb
@@ -80,7 +80,7 @@ github.com/sfomuseum/go-geojson-geotag
 github.com/sfomuseum/go-http-leaflet-geotag
 # github.com/sfomuseum/go-http-leaflet-layers v0.0.4
 github.com/sfomuseum/go-http-leaflet-layers
-# github.com/sfomuseum/go-http-oauth2 v0.0.3
+# github.com/sfomuseum/go-http-oauth2 v0.0.4
 github.com/sfomuseum/go-http-oauth2
 github.com/sfomuseum/go-http-oauth2/flags
 github.com/sfomuseum/go-http-oauth2/www
@@ -95,7 +95,8 @@ github.com/sfomuseum/go-www-geotag/assets/templates
 github.com/sfomuseum/go-www-geotag/geo
 github.com/sfomuseum/go-www-geotag/writer
 github.com/sfomuseum/go-www-geotag/www
-# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11
+# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.12
+github.com/sfomuseum/go-www-geotag-whosonfirst/app
 github.com/sfomuseum/go-www-geotag-whosonfirst/writer
 # github.com/tidwall/gjson v1.6.0
 github.com/tidwall/gjson

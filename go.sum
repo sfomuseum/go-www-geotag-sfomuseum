@@ -39,6 +39,8 @@ github.com/aaronland/go-http-cookie v0.2.0 h1:DXJ4jJ7lRwOGP1rUn68K3n24r6dGOO/3Pd
 github.com/aaronland/go-http-cookie v0.2.0/go.mod h1:fGP679ZUdWY+ISTL26BcHG6q7T8GT7rklpZJ/eHC7yo=
 github.com/aaronland/go-http-cookie v0.3.1 h1:+eNNvou/5mhgJa/VbwvhlKBJT7mqpTa+V32r/nkIt9s=
 github.com/aaronland/go-http-cookie v0.3.1/go.mod h1:x8CK9UF7W+Audtu+CyBKjVfGEmysK4wr8+pA9WLk7iU=
+github.com/aaronland/go-http-cookie v0.3.2 h1:7RO8CS524qo1UxyKiEmACx4pWO8Kb8AiohtCW3zVd+Y=
+github.com/aaronland/go-http-cookie v0.3.2/go.mod h1:x8CK9UF7W+Audtu+CyBKjVfGEmysK4wr8+pA9WLk7iU=
 github.com/aaronland/go-http-crumb v0.0.5 h1:ZhBkvWUW9wsw+KYnOu0sHAeRpsfY9kj0wh7yA8qGA0M=
 github.com/aaronland/go-http-crumb v0.0.5/go.mod h1:tzp6zHKE/pojVXQhcS1J5x5qQkhhxOTvJS2N7S1VVuY=
 github.com/aaronland/go-http-crumb v0.0.6 h1:R+hGU1SdkKxLqKIuabBwXpemo7VqFaCVYg4YK13JOnw=
@@ -223,6 +225,8 @@ github.com/sfomuseum/go-http-oauth2 v0.0.2 h1:JFZo1r9lSgKXz+59DcpkCDvOFb1XtQOipD
 github.com/sfomuseum/go-http-oauth2 v0.0.2/go.mod h1:dp4CQTrYPiRRbJ1N3pmlm1uPEltzIKmn/AXeJtcCflQ=
 github.com/sfomuseum/go-http-oauth2 v0.0.3 h1:oYTC+b0miAtj8h4TYXeq7uPRkzNMSrX3U058QGHicWk=
 github.com/sfomuseum/go-http-oauth2 v0.0.3/go.mod h1:fWWd5rsU2AARZk7t9PROQSA9iKm9V73zynqk/N6VX+E=
+github.com/sfomuseum/go-http-oauth2 v0.0.4 h1:to7I3pSGPxyxn6y/2v/8uwpmJsK2OIKi3TEPKRuYDrI=
+github.com/sfomuseum/go-http-oauth2 v0.0.4/go.mod h1:xRV4X0XMW0E+A8OXax/7KU1baJTU6hP7uAsxub9siPk=
 github.com/sfomuseum/go-http-tilezen v0.0.4 h1:VtgK1o0e4orgLthumMLZ3NcZHHJakixRMPphmSGiKDQ=
 github.com/sfomuseum/go-http-tilezen v0.0.4/go.mod h1:3KWUDN2cHiSWjRaI4wrt5FKa/EEsNcsOeh5GIgWTrBw=
 github.com/sfomuseum/go-tilezen v0.0.3 h1:B6BSBHTtno1MvtTMyNRhIK+MMaBQOml0AFoz+Uw8u5o=
@@ -297,6 +301,8 @@ github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.10 h1:4zLQallLXDZZ54GM0yXBZU
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.10/go.mod h1:nshZtDZS2JR2YExLTpd+vz264Nnm+Ktmg51DdrZ15IU=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11 h1:y14mZhPJl4dfoD2QkzQb3a8oPRQd1jinfcHFhh6msZI=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.12 h1:/s/Oyn5VlLPSFd6anFm92+Vj3m3m0Rd0wSDt5JjkzV0=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.12/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.2.0/go.mod h1:qt09Ya8vawLte6SNmTgCsAVtYtaKzEcn8ATUoHMkEqE=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=

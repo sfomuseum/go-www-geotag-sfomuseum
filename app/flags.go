@@ -5,13 +5,26 @@ import (
 	"flag"
 	"github.com/sfomuseum/go-flags"	
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
+	wof_app "github.com/sfomuseum/go-www-geotag-whosonfirst/app"	
 	"gocloud.dev/runtimevar"
 	_ "log"
 )
 
 func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
 	
-	return oauth2_flags.AppendOAuth2Flags(fs)
+	err := oauth2_flags.AppendOAuth2Flags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	err = wof_app.AppendWhosOnFirstFlags(fs)
+
+	if err != nil {
+		return err
+	}
+	
+	return nil
 }
 
 func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
@@ -21,6 +34,12 @@ func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
 	fs.Set("oauth2-auth-url", "https://github.com/login/oauth/authorize")
 	fs.Set("oauth2-token-url", "https://github.com/login/oauth/access_token")
 
+	err := wof_app.AssignWhosOnFirstFlags(fs)
+
+	if err != nil {
+		return err
+	}
+	
 	id_uri, err := flags.StringVar(fs, "oauth2-client-id")
 
 	if err != nil {
