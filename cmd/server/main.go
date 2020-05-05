@@ -4,6 +4,7 @@ import (
 	_ "github.com/sfomuseum/go-www-geotag-whosonfirst/writer"
 	_ "github.com/whosonfirst/go-reader-github"
 	_ "github.com/whosonfirst/go-writer-github"
+	_ "gocloud.dev/runtimevar/constantvar"
 )
 
 import (

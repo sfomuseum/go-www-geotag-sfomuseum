@@ -161,6 +161,7 @@ gocloud.dev/internal/oc
 gocloud.dev/internal/openurl
 gocloud.dev/internal/retry
 gocloud.dev/runtimevar
+gocloud.dev/runtimevar/constantvar
 gocloud.dev/runtimevar/driver
 gocloud.dev/secrets
 gocloud.dev/secrets/driver
