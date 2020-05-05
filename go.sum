@@ -15,6 +15,8 @@ github.com/aaronland/go-http-cookie v0.1.0 h1:ToMGm/RAFEgdGUMKJiMhMCfGiQUGAlUy5g
 github.com/aaronland/go-http-cookie v0.1.0/go.mod h1:fGP679ZUdWY+ISTL26BcHG6q7T8GT7rklpZJ/eHC7yo=
 github.com/aaronland/go-http-cookie v0.2.0 h1:DXJ4jJ7lRwOGP1rUn68K3n24r6dGOO/3PdfoKBlMxe0=
 github.com/aaronland/go-http-cookie v0.2.0/go.mod h1:fGP679ZUdWY+ISTL26BcHG6q7T8GT7rklpZJ/eHC7yo=
+github.com/aaronland/go-http-cookie v0.3.1 h1:+eNNvou/5mhgJa/VbwvhlKBJT7mqpTa+V32r/nkIt9s=
+github.com/aaronland/go-http-cookie v0.3.1/go.mod h1:x8CK9UF7W+Audtu+CyBKjVfGEmysK4wr8+pA9WLk7iU=
 github.com/aaronland/go-http-crumb v0.0.5 h1:ZhBkvWUW9wsw+KYnOu0sHAeRpsfY9kj0wh7yA8qGA0M=
 github.com/aaronland/go-http-crumb v0.0.5/go.mod h1:tzp6zHKE/pojVXQhcS1J5x5qQkhhxOTvJS2N7S1VVuY=
 github.com/aaronland/go-http-crumb v0.0.6 h1:R+hGU1SdkKxLqKIuabBwXpemo7VqFaCVYg4YK13JOnw=
@@ -51,6 +53,8 @@ github.com/aaronland/go-secretbox v0.1.0 h1:1M4LVD/qvdmZac+vjhjPt1SDobv++cASt8iz
 github.com/aaronland/go-secretbox v0.1.0/go.mod h1:HdQrEPwc1KCsqMzmC6OCDFt31JnDhkTl3waaHTXYW3g=
 github.com/aaronland/go-secretbox v0.2.0 h1:0d/FN0+Mi9ldwV6OZpS4rn6JuHQDhXeFdz6YwoJUZAk=
 github.com/aaronland/go-secretbox v0.2.0/go.mod h1:7tHFlYFqevWwl4ltgzRUJvncm4Qnj2Z4d1STUCkZZ6M=
+github.com/aaronland/go-secretbox v0.3.0 h1:8+qN/oJeu6pzriThvdjpe/i3ySyeZO2vwBoTO7TkA1o=
+github.com/aaronland/go-secretbox v0.3.0/go.mod h1:dgE+VUU4H2EoBDaIGOqr4jb2bw95mT+aBtspMA192t4=
 github.com/aaronland/go-string v0.1.0/go.mod h1:2aMIWdTqk63jZsaLLy+p9dsB1MDRqx4sHYoLtkwyYUo=
 github.com/aaronland/go-string v0.1.1 h1:btdr18owWCBN14ojKx3p+PBCKfm9qIggYEguPLUb2wE=
 github.com/aaronland/go-string v0.1.1/go.mod h1:2aMIWdTqk63jZsaLLy+p9dsB1MDRqx4sHYoLtkwyYUo=
@@ -62,6 +66,10 @@ github.com/aaronland/go-uid-artisanal v0.0.0-20191128230022-67bc446aa49d h1:2Sa8
 github.com/aaronland/go-uid-artisanal v0.0.0-20191128230022-67bc446aa49d/go.mod h1:/fkI7C9H/GTB/TlLmNsKjHoNyXnYlkb/iG4Qp3tSCmE=
 github.com/akrylysov/algnhsa v0.0.0-20190319020909-05b3d192e9a7/go.mod h1:HhzjNA0EjUWcwHTUMwqrpeAdIF3gRmpH0HpWx1hYJSc=
 github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883/go.mod h1:rCTlJbsFo29Kk6CurOXKm700vrz8f0KW0JNfpkRJY/8=
+github.com/awnumar/memcall v0.0.0-20191004114545-73db50fd9f80 h1:8kObYoBO4LNmQ+fLiScBfxEdxF1w2MHlvH/lr9MLaTg=
+github.com/awnumar/memcall v0.0.0-20191004114545-73db50fd9f80/go.mod h1:S911igBPR9CThzd/hYQQmTc9SWNu3ZHIlCGaWsWsoJo=
+github.com/awnumar/memguard v0.22.2 h1:tMxcq1WamhG13gigK8Yaj9i/CHNUO3fFlpS9ABBQAxw=
+github.com/awnumar/memguard v0.22.2/go.mod h1:33OwJBHC+T4eEfFcDrQb78TMlBMBvcOPCXWU9xE34gM=
 github.com/aws/aws-lambda-go v1.9.0/go.mod h1:zUsUQhAUjYzR8AuduJPCfhBuKWUaDbQiPOG+ouzmE1A=
 github.com/aws/aws-lambda-go v1.10.0 h1:uafgdfYGQD0UeT7d2uKdyWW8j/ZYRifRPIdmeqLzLCk=
 github.com/aws/aws-lambda-go v1.10.0/go.mod h1:zUsUQhAUjYzR8AuduJPCfhBuKWUaDbQiPOG+ouzmE1A=
@@ -94,6 +102,8 @@ github.com/sfomuseum/go-flags v0.0.2 h1:gdhf3A8oxHACAeFQpEHUplfLjkBCb6dILaftSSMD
 github.com/sfomuseum/go-flags v0.0.2/go.mod h1:54KCZIGmvZkIOrSCHSNMvgSTKH2gJRJyISH+AiI+55w=
 github.com/sfomuseum/go-flags v0.0.4 h1:dCyG9891QspfnSVtZI/ueEJ/LYweHtXPv2yubqUsH+I=
 github.com/sfomuseum/go-flags v0.0.4/go.mod h1:54KCZIGmvZkIOrSCHSNMvgSTKH2gJRJyISH+AiI+55w=
+github.com/sfomuseum/go-flags v0.1.0 h1:iXE7KG28aMNuMnxqeQq1cmA12xCe/eX57bU9b370FGk=
+github.com/sfomuseum/go-flags v0.1.0/go.mod h1:54KCZIGmvZkIOrSCHSNMvgSTKH2gJRJyISH+AiI+55w=
 github.com/sfomuseum/go-geojson-geotag v0.0.1 h1:tdcP9EIWHWbyQpsUuI2KMQdCY+NIMslaEJ78zTqw/w4=
 github.com/sfomuseum/go-geojson-geotag v0.0.1/go.mod h1:KC3HmXH9Aws5v5iPzCukiNGUlLfHITZAqFVLqvi2COg=
 github.com/sfomuseum/go-geojson-geotag v0.0.2 h1:2BOfA+0TWldxPewzxrjHgR7q6gYEEE4fhYZ6JURwS68=
@@ -110,6 +120,8 @@ github.com/sfomuseum/go-http-leaflet-layers v0.0.1 h1:o5qCG4Xp/wuO4uJ+3V+nKXqOH/
 github.com/sfomuseum/go-http-leaflet-layers v0.0.1/go.mod h1:y44/bRbzZikkm26+0exD2nkJ8SGsOpQmXT1NM/R58iE=
 github.com/sfomuseum/go-http-leaflet-layers v0.0.2 h1:+50AXlMioejRz4K+KKs0+MiaopiP1ehnHlcc4OTHRrk=
 github.com/sfomuseum/go-http-leaflet-layers v0.0.2/go.mod h1:y44/bRbzZikkm26+0exD2nkJ8SGsOpQmXT1NM/R58iE=
+github.com/sfomuseum/go-http-leaflet-layers v0.0.4 h1:okXQg4lK81Y1inORI8TDCpaaxVSua1ANuiSEwIEcOKg=
+github.com/sfomuseum/go-http-leaflet-layers v0.0.4/go.mod h1:y44/bRbzZikkm26+0exD2nkJ8SGsOpQmXT1NM/R58iE=
 github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583 h1:HIpEokIRUrLd1PMU9DnifrkTU04PDwVATuRhmmdF4Lc=
 github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416174315-a76babee5583/go.mod h1:EgBwnmKjgwnPaj0KXtjewc4dUCS+1neOdMewpiAO33g=
 github.com/sfomuseum/go-http-oauth2 v0.0.0-20200416181454-f57181a2b3de h1:P8qS0I4u+tjxG0DE2Bx3et9a5apvbmgZW50BPvKXXaM=
@@ -126,6 +138,8 @@ github.com/sfomuseum/go-http-oauth2 v0.0.1 h1:3MBq6IRGwBQ6tJSPNxAneW8r1eGESVE+/6
 github.com/sfomuseum/go-http-oauth2 v0.0.1/go.mod h1:MZtZYioK7dYtqu3XyDEJrV2OvQuKG1azoKLe5FRylpw=
 github.com/sfomuseum/go-http-oauth2 v0.0.2 h1:JFZo1r9lSgKXz+59DcpkCDvOFb1XtQOipDQB5LKTHt4=
 github.com/sfomuseum/go-http-oauth2 v0.0.2/go.mod h1:dp4CQTrYPiRRbJ1N3pmlm1uPEltzIKmn/AXeJtcCflQ=
+github.com/sfomuseum/go-http-oauth2 v0.0.3 h1:oYTC+b0miAtj8h4TYXeq7uPRkzNMSrX3U058QGHicWk=
+github.com/sfomuseum/go-http-oauth2 v0.0.3/go.mod h1:fWWd5rsU2AARZk7t9PROQSA9iKm9V73zynqk/N6VX+E=
 github.com/sfomuseum/go-http-tilezen v0.0.4 h1:VtgK1o0e4orgLthumMLZ3NcZHHJakixRMPphmSGiKDQ=
 github.com/sfomuseum/go-http-tilezen v0.0.4/go.mod h1:3KWUDN2cHiSWjRaI4wrt5FKa/EEsNcsOeh5GIgWTrBw=
 github.com/sfomuseum/go-tilezen v0.0.3 h1:B6BSBHTtno1MvtTMyNRhIK+MMaBQOml0AFoz+Uw8u5o=
@@ -164,6 +178,8 @@ github.com/sfomuseum/go-www-geotag v0.0.7 h1:3wQ2N2e2/APHxcgI0xQK0123iCv/YZJkmp4
 github.com/sfomuseum/go-www-geotag v0.0.7/go.mod h1:Xy9PlbKSc3IEmxejssttiYAfoCYk6va5s1P51uKaDo4=
 github.com/sfomuseum/go-www-geotag v0.0.8 h1:ImwyjWFFvpI7SvZmGc2ZM7THPstoWfF8PCFvOZ9ABpc=
 github.com/sfomuseum/go-www-geotag v0.0.8/go.mod h1:3M64Idx4/mXeKuOJUxTFPw58d3eTXdFMEcDVFvgUApo=
+github.com/sfomuseum/go-www-geotag v0.0.11 h1:k6ZDM+hiPzlJ7ImmUF47ftsGWMSmgKYLDyRZziKmEF4=
+github.com/sfomuseum/go-www-geotag v0.0.11/go.mod h1:UYuBUWO3dYKvMEJmQyemUp1Zi05cb1E3SO7aPWhJOQI=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0 h1:2WJvfnv47l9dDyAeGIBt7OI6BZhL7TOQhn1uG5CZOm4=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200410233212-608053fbf3e0/go.mod h1:Q1hictduPTs9xavI/JpwjRvPlmedo72zlAwIZdvDvOY=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.0-20200413183933-511665158c68 h1:ZvohkvtqTxFkV2X6k4zh9s6ZxcBzxd/z54cbQfgpq7Q=
@@ -196,6 +212,8 @@ github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.8 h1:WpDsQq+DDpeoXaYC5mBsQSy
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.8/go.mod h1:JBOzbKkGYcNzEF0X9B+0yJQ9VagcIpftrjIR47IWAX8=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.10 h1:4zLQallLXDZZ54GM0yXBZU90dGUB4PgYPpaw9EaBQuM=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.10/go.mod h1:nshZtDZS2JR2YExLTpd+vz264Nnm+Ktmg51DdrZ15IU=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11 h1:y14mZhPJl4dfoD2QkzQb3a8oPRQd1jinfcHFhh6msZI=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
@@ -248,8 +266,11 @@ github.com/whosonfirst/go-writer-github v0.0.2/go.mod h1:Yq8manmP3OVEZUtwjoXKcYB
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4 h1:HuIa8hRrWRSrqYzx1qI49NNxhdi2PrY7gxVSq1JjLDc=
 golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
+golang.org/x/crypto v0.0.0-20200311171314-f7b00557c8c4/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
 golang.org/x/crypto v0.0.0-20200414173820-0848c9571904 h1:bXoxMPcSLOq08zI3/c5dEBT6lE4eh+jOh886GHrn6V8=
 golang.org/x/crypto v0.0.0-20200414173820-0848c9571904/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
+golang.org/x/crypto v0.0.0-20200429183012-4b2356b1ed79 h1:IaQbIIB2X/Mp/DKctl6ROxz1KyMlKp4uyvL6+kQ7C88=
+golang.org/x/crypto v0.0.0-20200429183012-4b2356b1ed79/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
 golang.org/x/net v0.0.0-20180724234803-3673e40ba225/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e h1:bRhVy7zSSasaqNksaRZiA5EEI+Ei4I1nO5Jh72wfHlg=
 golang.org/x/net v0.0.0-20190108225652-1e06a53dbb7e/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
@@ -267,6 +288,8 @@ golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4/go.mod h1:RxMgew5VJxzue5/jJ
 golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20190412213103-97732733099d h1:+R4KGOnez64A81RvjARKc4UT5/tI9ujCIVX+P5KiHuI=
 golang.org/x/sys v0.0.0-20190412213103-97732733099d/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20191001151750-bb3f8db39f24/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20200302150141-5c8b2ff67527/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd h1:xhmwyvizuTgC2qz7ZlMluP20uW+C3Rm0FD/WLDX8884=
 golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
