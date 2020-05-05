@@ -303,6 +303,8 @@ github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11 h1:y14mZhPJl4dfoD2QkzQb3a
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.11/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.12 h1:/s/Oyn5VlLPSFd6anFm92+Vj3m3m0Rd0wSDt5JjkzV0=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.12/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.13 h1:0MLhu0KGb/xzDNNaKO/1+w0FV4asM7Nmi21yuWiqTJ8=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.13/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.2.0/go.mod h1:qt09Ya8vawLte6SNmTgCsAVtYtaKzEcn8ATUoHMkEqE=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
