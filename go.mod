@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/aaronland/go-http-rewrite v0.0.4
+	github.com/aaronland/go-http-sanitize v0.0.4
 	github.com/sfomuseum/go-flags v0.1.0
 	github.com/sfomuseum/go-geojson-geotag v0.0.3
 	github.com/sfomuseum/go-http-oauth2 v0.0.4

@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"github.com/aaronland/go-http-sanitize"
 	"github.com/sfomuseum/go-geojson-geotag"
 	oauth2_www "github.com/sfomuseum/go-http-oauth2/www"
 	"github.com/sfomuseum/go-www-geotag/writer"
@@ -81,6 +82,13 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 			return
 		}
 
+		uid, err := sanitize.GetString(req, "id")
+
+		if err != nil {
+			http.Error(rsp, err.Error(), http.StatusBadRequest)
+			return
+		}
+
 		geotag_f, err := geotag.NewGeotagFeatureWithReader(req.Body)
 
 		if err != nil {
@@ -88,14 +96,7 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 			return
 		}
 
-		uri := geotag_f.Id
-
-		if uri == "" {
-			http.Error(rsp, err.Error(), http.StatusBadRequest)
-			return
-		}
-
-		err = wr.WriteFeature(ctx, uri, geotag_f)
+		err = wr.WriteFeature(ctx, uid, geotag_f)
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusInternalServerError)

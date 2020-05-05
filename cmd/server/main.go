@@ -45,7 +45,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to assign SFO Museum flags, %v", err)
 	}
-	
+
 	mux := http.NewServeMux()
 
 	err = sfom_app.AppendAssetHandlers(ctx, fl, mux)
