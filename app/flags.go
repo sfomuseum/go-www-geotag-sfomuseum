@@ -6,6 +6,7 @@ import (
 	"github.com/sfomuseum/go-flags"	
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 	"gocloud.dev/runtimevar"
+	_ "log"
 )
 
 func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
