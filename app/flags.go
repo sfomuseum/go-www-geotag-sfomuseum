@@ -32,6 +32,12 @@ func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
 	if err != nil {
 		return err
 	}
+
+	cookie_uri, err := flags.StringVar(fs, "oauth2-cookie-uri")
+
+	if err != nil {
+		return err
+	}
 	
 	ctx := context.Background()
 	
@@ -47,8 +53,15 @@ func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
 		return err
 	}
 
+	oauth2_cookie, err := runtimeStringVar(ctx, cookie_uri)
+
+	if err != nil {
+		return err
+	}
+	
 	fs.Set("oauth2-client-id", client_id)
-	fs.Set("oauth2-client-secret", client_secret)	
+	fs.Set("oauth2-client-secret", client_secret)
+	fs.Set("oauth2-cookie-uri", oauth2_cookie)		
 	
 	return nil
 }
