@@ -13,4 +13,5 @@ require (
 	github.com/whosonfirst/go-bindata-assetfs v1.0.1
 	github.com/whosonfirst/go-reader-github v0.1.2
 	github.com/whosonfirst/go-writer-github v0.0.2
+	gocloud.dev v0.19.0
 )
