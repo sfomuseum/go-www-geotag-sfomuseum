@@ -1,26 +1,36 @@
 # go-www-geotag-sfomuseum
 
-Work in progress.
+A web application, written in Go, for geotagging images in the SFO Museum collection.
+
+## Important
+
+This is work in progress, including the documentation. In the meantime please have a look at the [Geotagging at SFO Museum](https://millsfield.sfomuseum.org/blog/tags/geotagging) series of blog posts and the [Geotagging at SFO Museum, Part 7 – Custom Writers](https://millsfield.sfomuseum.org/blog/2020/05/01/geotagging-custom-writers/) and [Geotagging at SFO Museum, part 9 – Publishing Data](https://millsfield.sfomuseum.org/blog/2020/05/07/geotagging-publishing/) posts in particular.
 
 ## Example
 
 ```
-go run -mod vendor cmd/server/main.go \
-	-server-uri 'mkcert://localhost:8080' \
+$> cd go-www-geotag-sfomuseum
+$> go build -mod vendor -p bin/server cmd/server/main.go
+
+$> bin/server \
 	-nextzen-apikey {NEXTZEN_API_KEY} \
-	-enable-placeholder \
-	-placeholder-endpoint {PLACEHOLDER_ENDPOINT} \
+	-enable-placeholder
+	-placeholder-endpoint {PLACEHOLDER_API_KEY} \
 	-enable-oembed \
 	-oembed-endpoints 'https://millsfield.sfomuseum.org/oembed/?url={url}' \
 	-enable-writer \
-	-writer-uri 'whosonfirst://?writer=githubapi%3A%2F%2Fsfomuseum-data%2Fsfomuseum-data-collection%3Faccess_token%3D%7Baccess_token%7D%26prefix%3Ddata&reader=githubapi%3A%2F%2Fsfomuseum-data%2Fsfomuseum-data-collection%3Faccess_token%3D%7Baccess_token%7D%26prefix%3Ddata&update=1&source=sfomuseum' \
-	-crumb-dsn debug \
+	-writer-uri 'whosonfirst://?writer={whosonfirst_writer}&reader={whosonfirst_reader}&update=1&source=sfomuseum' \
+	-whosonfirst-writer-uri 'githubapi://sfomuseum-data/sfomuseum-data-collection?access_token={access_token}&prefix=data/' \
+	-whosonfirst-reader-uri 'githubapi://sfomuseum-data/sfomuseum-data-collection?access_token={access_token}&prefix=data/' \
 	-enable-oauth2 \
-	-oauth2-client-id {CLIENT_ID} \
-	-oauth2-client-secret {CLIENT_SECRET} \
-	-oauth2-cookie-dsn debug \
-	-oauth2-scopes 'user,repo'
-2020/04/16 16:03:57 Listening on https://localhost:8080
+	-oauth2-scopes 'user,repo' \
+	-oauth2-client-id "constant://?val={OAUTH2_CLIENT_ID}&decoder=string" \
+	-oauth2-client-secret "constant://?val={OAUTH2_SECRET}&decoder=string" \
+	-oauth2-cookie-uri "constant://?val=debug&decoder=string" \
+	-server-uri 'mkcert://localhost:8080'
+	
+2020/05/05 11:42:37 Checking whether mkcert is installed. If it is not you may be prompted for your password (in order to install certificate files)
+2020/05/05 11:42:40 Listening on https://localhost:8080
 ```
 
 ## See also
