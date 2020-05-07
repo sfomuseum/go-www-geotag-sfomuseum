@@ -37,3 +37,4 @@ $> bin/server \
 
 * https://github.com/sfomuseum/go-www-geotag
 * https://github.com/sfomuseum/go-www-geotag-whosonfirst
+* https://github.com/sfomuseum/go-http-oauth2
