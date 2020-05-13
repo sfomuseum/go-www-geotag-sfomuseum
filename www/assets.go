@@ -8,10 +8,10 @@
 package www
 
 import (
-	"github.com/whosonfirst/go-bindata-assetfs"
 	"bytes"
 	"compress/gzip"
 	"fmt"
+	"github.com/whosonfirst/go-bindata-assetfs"
 	"io"
 	"io/ioutil"
 	"os"
@@ -183,9 +183,9 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"static/javascript/catalog.js": staticJavascriptCatalogJs,
+	"static/javascript/catalog.js":               staticJavascriptCatalogJs,
 	"static/javascript/sfomuseum.geotag.init.js": staticJavascriptSfomuseumGeotagInitJs,
-	"static/javascript/sfomuseum.maps.js": staticJavascriptSfomuseumMapsJs,
+	"static/javascript/sfomuseum.maps.js":        staticJavascriptSfomuseumMapsJs,
 }
 
 // AssetDir returns the file names below a certain
@@ -227,12 +227,13 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"static": &bintree{nil, map[string]*bintree{
 		"javascript": &bintree{nil, map[string]*bintree{
-			"catalog.js": &bintree{staticJavascriptCatalogJs, map[string]*bintree{}},
+			"catalog.js":               &bintree{staticJavascriptCatalogJs, map[string]*bintree{}},
 			"sfomuseum.geotag.init.js": &bintree{staticJavascriptSfomuseumGeotagInitJs, map[string]*bintree{}},
-			"sfomuseum.maps.js": &bintree{staticJavascriptSfomuseumMapsJs, map[string]*bintree{}},
+			"sfomuseum.maps.js":        &bintree{staticJavascriptSfomuseumMapsJs, map[string]*bintree{}},
 		}},
 	}},
 }}
@@ -283,7 +284,6 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-
 
 func assetFS() *assetfs.AssetFS {
 	assetInfo := func(path string) (os.FileInfo, error) {

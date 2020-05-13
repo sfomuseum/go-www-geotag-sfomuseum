@@ -73,6 +73,8 @@ github.com/aaronland/go-pool v0.0.0-20191128211702-88306299c758 h1:m/JUyvxsCbgOy
 github.com/aaronland/go-pool v0.0.0-20191128211702-88306299c758/go.mod h1:hL9EPOZJ6WVHaz7D0Jw1Dn1vaCOOSZNrYBTKMgDKYRk=
 github.com/aaronland/go-roster v0.0.1 h1:r1l4n1HfWvEtOXZvhfXX0Won9Xf6QJsigdUdzOtuy/M=
 github.com/aaronland/go-roster v0.0.1/go.mod h1:AcovpxlG1XxJxX2Fjqlm63fEIBhCjEIBV4lP87FZDmI=
+github.com/aaronland/go-roster v0.0.2 h1:2Fu7v4VQLRLRL/Zgr6R9S5JxsW75Ab/K88QtMVX532s=
+github.com/aaronland/go-roster v0.0.2/go.mod h1:AcovpxlG1XxJxX2Fjqlm63fEIBhCjEIBV4lP87FZDmI=
 github.com/aaronland/go-secretbox v0.1.0 h1:1M4LVD/qvdmZac+vjhjPt1SDobv++cASt8izGSrzN4U=
 github.com/aaronland/go-secretbox v0.1.0/go.mod h1:HdQrEPwc1KCsqMzmC6OCDFt31JnDhkTl3waaHTXYW3g=
 github.com/aaronland/go-secretbox v0.2.0 h1:0d/FN0+Mi9ldwV6OZpS4rn6JuHQDhXeFdz6YwoJUZAk=
@@ -311,6 +313,8 @@ github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.13 h1:0MLhu0KGb/xzDNNaKO/1+w
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.13/go.mod h1:fZRYLcgZRu3bcKlJoOdIzqdJb3j9166Gju5Tp/Hpm00=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.14 h1:hNJM+UNFU0cx2ZjNFCmrhj94WyJ772RulbyQCakfM+c=
 github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.14/go.mod h1:42KFrN2z/zy/Q5q5XqYabbJxEXGUNOIAzj2u4Ty45gg=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.15 h1:sykbuFK6bF4oET7FLmpmKaQt5SmMd3oEl3a7LkKXhc8=
+github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.15/go.mod h1:a0Y4AQmV2ANdQtr5+Y1ejA4H+JdcvJPrevHn/71sSok=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.2.0/go.mod h1:qt09Ya8vawLte6SNmTgCsAVtYtaKzEcn8ATUoHMkEqE=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
@@ -342,8 +346,14 @@ github.com/whosonfirst/go-cache v0.0.2 h1:O6DxFeSkHPSCxmXSmsTX5tXCY8m/FStEPgglR/
 github.com/whosonfirst/go-cache v0.0.2/go.mod h1:SUK9m5/Dh2WvYGCtlu1Uxo1h+6VUaRra1QHaPSOF+gI=
 github.com/whosonfirst/go-reader v0.1.1 h1:0fXoYQR/Yyh3PKk+9Huwoc6dCAt8l1tjg2dEShjqcFI=
 github.com/whosonfirst/go-reader v0.1.1/go.mod h1:w0AeU+Ojyfmxb7r+rcSYyxpCxrhxlHv+D9EgEwQsqcM=
+github.com/whosonfirst/go-reader v0.2.0 h1:Et8rvkh+86msAo4Db4h88m1t2QDSMNr3rLy6RqJzeJc=
+github.com/whosonfirst/go-reader v0.2.0/go.mod h1:qUhz3OWefOUX/G1nzCEUzJskDjkF+l9oKPOM3K2fAJI=
 github.com/whosonfirst/go-reader-github v0.1.2 h1:c7M7BDot/ewnvW6q+jbQEwx0ryzKgtmLrb9Yew1OShA=
 github.com/whosonfirst/go-reader-github v0.1.2/go.mod h1:cgKcxe6Ntd0Xf6MZ1yPBe4Qq8vvOWgPBoaMzphuNXm8=
+github.com/whosonfirst/go-reader-github v0.2.0 h1:3L4PO81j2ru1Cl4sm8aLfY8viSssH/MwKy1coZhPjPY=
+github.com/whosonfirst/go-reader-github v0.2.0/go.mod h1:KBs4H6VvhJApfSHVWTwYe8I3O065vs4511fanNVtR34=
+github.com/whosonfirst/go-reader-http v0.1.0 h1:zgrfHAD5y/jWk2xdoJuGeJr6ISxO+E/GqjxQ8R+j8Do=
+github.com/whosonfirst/go-reader-http v0.1.0/go.mod h1:He/0OcmeKl/zx7dDbI2bgVJPHj7TdlCBHL5ufQ+hnRw=
 github.com/whosonfirst/go-sanitize v0.1.0 h1:ygSqCnakwdzH/m8UEa15zXGDsoo5/JJeRkgmAjXZrBU=
 github.com/whosonfirst/go-sanitize v0.1.0/go.mod h1:p/emgbafMM0p5iVAz2XWwecYPl06Tw4Jos9rhTKIrt8=
 github.com/whosonfirst/go-whosonfirst-export v0.3.1 h1:oTAfaeUrIqx9RLjnlyVLfvPj36kHnx4DLYZr5yHsw+g=

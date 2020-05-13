@@ -69,13 +69,13 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 	}
 
 	/*
-	webview_handler, err := flags.StringVar(fs, "wk-webview-handler")
+		webview_handler, err := flags.StringVar(fs, "wk-webview-handler")
 
-	if err != nil {
-		return err
-	}
+		if err != nil {
+			return err
+		}
 	*/
-	
+
 	editor_opts := sfom_www.DefaultEditorOptions()
 
 	if enable_webview {
@@ -83,11 +83,11 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		editor_opts.DataAttributes["enable-wk-webview"] = "true"
 
 		/*
-		if webview_handler == "" {
-			return errors.New("Invalid -wk-webview-handler flag")
-		}
+			if webview_handler == "" {
+				return errors.New("Invalid -wk-webview-handler flag")
+			}
 
-		editor_opts.DataAttributes["wk-webview-handler"] = webview_handler
+			editor_opts.DataAttributes["wk-webview-handler"] = webview_handler
 		*/
 	}
 
