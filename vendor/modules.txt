@@ -72,6 +72,8 @@ github.com/paulmach/orb/internal/length
 github.com/paulmach/orb/internal/mercator
 github.com/paulmach/orb/maptile
 github.com/paulmach/orb/planar
+# github.com/rs/cors v1.7.0
+github.com/rs/cors
 # github.com/sfomuseum/go-flags v0.1.0
 github.com/sfomuseum/go-flags
 # github.com/sfomuseum/go-geojson-geotag v0.0.3
@@ -88,14 +90,14 @@ github.com/sfomuseum/go-http-oauth2/www
 github.com/sfomuseum/go-http-tilezen/http
 # github.com/sfomuseum/go-tilezen v0.0.3
 github.com/sfomuseum/go-tilezen
-# github.com/sfomuseum/go-www-geotag v0.0.11
+# github.com/sfomuseum/go-www-geotag v0.0.15
 github.com/sfomuseum/go-www-geotag/api
 github.com/sfomuseum/go-www-geotag/app
 github.com/sfomuseum/go-www-geotag/assets/templates
 github.com/sfomuseum/go-www-geotag/geo
 github.com/sfomuseum/go-www-geotag/writer
 github.com/sfomuseum/go-www-geotag/www
-# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.13
+# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.14
 github.com/sfomuseum/go-www-geotag-whosonfirst/app
 github.com/sfomuseum/go-www-geotag-whosonfirst/writer
 # github.com/tidwall/gjson v1.6.0
@@ -135,9 +137,9 @@ github.com/whosonfirst/go-whosonfirst-sources
 github.com/whosonfirst/go-whosonfirst-sources/sources
 # github.com/whosonfirst/go-whosonfirst-uri v0.2.0
 github.com/whosonfirst/go-whosonfirst-uri
-# github.com/whosonfirst/go-writer v0.1.0
+# github.com/whosonfirst/go-writer v0.2.0
 github.com/whosonfirst/go-writer
-# github.com/whosonfirst/go-writer-github v0.0.2
+# github.com/whosonfirst/go-writer-github v0.1.0
 github.com/whosonfirst/go-writer-github
 # go.opencensus.io v0.22.2
 go.opencensus.io
