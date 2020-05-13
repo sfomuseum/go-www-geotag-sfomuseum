@@ -40,58 +40,67 @@ func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
 		return err
 	}
 
-	id_uri, err := flags.StringVar(fs, "oauth2-client-id")
+	enable_oauth2, err := flags.BoolVar(fs, "enable-oauth2")
 
 	if err != nil {
 		return err
 	}
 
-	secret_uri, err := flags.StringVar(fs, "oauth2-client-secret")
+	if enable_oauth2 {
 
-	if err != nil {
-		return err
-	}
-
-	cookie_uri, err := flags.StringVar(fs, "oauth2-cookie-uri")
-
-	if err != nil {
-		return err
-	}
-
-	ctx := context.Background()
-
-	client_id, err := runtimeStringVar(ctx, id_uri)
-
-	if err != nil {
-		return err
-	}
-
-	client_secret, err := runtimeStringVar(ctx, secret_uri)
-
-	if err != nil {
-		return err
-	}
-
-	var oauth2_cookie string
-
-	if cookie_uri == "debug" {
-
-		oauth2_cookie = "constant://?val=debug&decoder=string"
-
-	} else {
-
-		cookie, err := runtimeStringVar(ctx, cookie_uri)
+		id_uri, err := flags.StringVar(fs, "oauth2-client-id")
 
 		if err != nil {
 			return err
 		}
 
-		oauth2_cookie = cookie
-	}
+		secret_uri, err := flags.StringVar(fs, "oauth2-client-secret")
 
-	fs.Set("oauth2-client-id", client_id)
-	fs.Set("oauth2-client-secret", client_secret)
-	fs.Set("oauth2-cookie-uri", oauth2_cookie)
+		if err != nil {
+			return err
+		}
+
+		cookie_uri, err := flags.StringVar(fs, "oauth2-cookie-uri")
+
+		if err != nil {
+			return err
+		}
+
+		ctx := context.Background()
+
+		client_id, err := runtimeStringVar(ctx, id_uri)
+
+		if err != nil {
+			return err
+		}
+
+		client_secret, err := runtimeStringVar(ctx, secret_uri)
+
+		if err != nil {
+			return err
+		}
+
+		var oauth2_cookie string
+
+		if cookie_uri == "debug" {
+
+			oauth2_cookie = "constant://?val=debug&decoder=string"
+
+		} else {
+
+			cookie, err := runtimeStringVar(ctx, cookie_uri)
+
+			if err != nil {
+				return err
+			}
+
+			oauth2_cookie = cookie
+		}
+
+		fs.Set("oauth2-client-id", client_id)
+		fs.Set("oauth2-client-secret", client_secret)
+		fs.Set("oauth2-cookie-uri", oauth2_cookie)
+	}
 
 	return nil
 }
