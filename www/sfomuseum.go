@@ -9,8 +9,9 @@ import (
 )
 
 type ResourceOptions struct {
-	JS  []string
-	CSS []string
+	JS             []string
+	CSS            []string
+	DataAttributes map[string]string
 }
 
 func DefaultEditorOptions() *ResourceOptions {
@@ -21,6 +22,7 @@ func DefaultEditorOptions() *ResourceOptions {
 			"/javascript/sfomuseum.maps.js",
 			"/javascript/sfomuseum.geotag.init.js",
 		},
+		DataAttributes: make(map[string]string),
 	}
 
 	return opts
@@ -48,8 +50,9 @@ func AppendResourcesHandlerWithPrefix(next http.Handler, opts *ResourceOptions, 
 	}
 
 	ext_opts := &rewrite.AppendResourcesOptions{
-		JavaScript:  js,
-		Stylesheets: css,
+		JavaScript:     js,
+		Stylesheets:    css,
+		DataAttributes: opts.DataAttributes,
 	}
 
 	return rewrite.AppendResourcesHandler(next, ext_opts)

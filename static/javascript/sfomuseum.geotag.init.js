@@ -54,8 +54,26 @@ window.addEventListener("load", function load(event){
             var fov = camera.getFieldOfView();
 	    
 	    var on_success = function(rsp){
+		
 		console.log("WRITE OKAY", rsp);
-		console.log("WEBKIT IT UP");
+
+		var wk_webview = document.body.getAttribute("data-enable-wk-webview");
+
+		if (wk_webview == "true"){
+
+		    console.log("WEBKIT IT UP...");
+		    
+		    try {
+			var body = JSON.stringify(rsp);
+			var wk_rsp = webkit.messageHandlers.geotagImage.postMessage(body);
+			console.log("WEBKIT RESPONSE", wk_rsp);
+		    } catch(e) {
+			console.log("SAD", e);
+		    }
+
+		    console.log("DONE");
+		}
+		
 	    };
 	    
             var on_error = function(err){

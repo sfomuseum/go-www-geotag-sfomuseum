@@ -62,7 +62,35 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return err
 	}
 
+	enable_webview, err := flags.BoolVar(fs, "enable-wk-webview")
+
+	if err != nil {
+		return err
+	}
+
+	/*
+	webview_handler, err := flags.StringVar(fs, "wk-webview-handler")
+
+	if err != nil {
+		return err
+	}
+	*/
+	
 	editor_opts := sfom_www.DefaultEditorOptions()
+
+	if enable_webview {
+
+		editor_opts.DataAttributes["enable-wk-webview"] = "true"
+
+		/*
+		if webview_handler == "" {
+			return errors.New("Invalid -wk-webview-handler flag")
+		}
+
+		editor_opts.DataAttributes["wk-webview-handler"] = webview_handler
+		*/
+	}
+
 	handler = sfom_www.AppendResourcesHandler(handler, editor_opts)
 
 	if enable_oauth2 {
