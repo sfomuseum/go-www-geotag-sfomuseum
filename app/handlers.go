@@ -81,6 +81,7 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 	if enable_webview {
 
 		editor_opts.DataAttributes["enable-wk-webview"] = "true"
+		editor_opts.JS = append(editor_opts.JS, "/javascript/sfomuseum.webkit.init.js")
 
 		/*
 			if webview_handler == "" {
