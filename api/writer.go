@@ -42,37 +42,44 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 			return
 		}
 
-		if wr_u.Scheme == "whosonfirst" {
+		if token != nil {
 
-			wr_q := wr_u.Query()
+			switch wr_u.Scheme {
+			case "whosonfirst":
 
-			wr_reader := wr_q.Get("reader")
-			wr_writer := wr_q.Get("writer")
+				wr_q := wr_u.Query()
 
-			wr_reader, err = url.QueryUnescape(wr_reader)
+				wr_reader := wr_q.Get("reader")
+				wr_writer := wr_q.Get("writer")
 
-			if err != nil {
-				http.Error(rsp, err.Error(), http.StatusInternalServerError)
-				return
+				wr_reader, err = url.QueryUnescape(wr_reader)
+
+				if err != nil {
+					http.Error(rsp, err.Error(), http.StatusInternalServerError)
+					return
+				}
+
+				wr_writer, err = url.QueryUnescape(wr_writer)
+
+				if err != nil {
+					http.Error(rsp, err.Error(), http.StatusInternalServerError)
+					return
+				}
+
+				wr_reader = strings.Replace(wr_reader, "{access_token}", token.AccessToken, -1)
+				wr_writer = strings.Replace(wr_writer, "{access_token}", token.AccessToken, -1)
+
+				wr_reader = url.QueryEscape(wr_reader)
+				wr_writer = url.QueryEscape(wr_writer)
+
+				wr_q.Set("reader", wr_reader)
+				wr_q.Set("writer", wr_writer)
+
+				wr_uri = fmt.Sprintf("whosonfirst://?%s", wr_q.Encode())
+
+			default:
+				// pass
 			}
-
-			wr_writer, err = url.QueryUnescape(wr_writer)
-
-			if err != nil {
-				http.Error(rsp, err.Error(), http.StatusInternalServerError)
-				return
-			}
-
-			wr_reader = strings.Replace(wr_reader, "{access_token}", token.AccessToken, -1)
-			wr_writer = strings.Replace(wr_writer, "{access_token}", token.AccessToken, -1)
-
-			wr_reader = url.QueryEscape(wr_reader)
-			wr_writer = url.QueryEscape(wr_writer)
-
-			wr_q.Set("reader", wr_reader)
-			wr_q.Set("writer", wr_writer)
-
-			wr_uri = fmt.Sprintf("whosonfirst://?%s", wr_q.Encode())
 		}
 
 		wr, err := writer.NewWriter(ctx, wr_uri)
@@ -93,6 +100,13 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 
 		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		ctx, err = writer.SetIOWriterWithContext(ctx, rsp)
+
+		if err != nil {
+			http.Error(rsp, err.Error(), http.StatusInternalServerError)
 			return
 		}
 

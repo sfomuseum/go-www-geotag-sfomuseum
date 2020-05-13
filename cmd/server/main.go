@@ -54,7 +54,7 @@ func main() {
 		log.Fatalf("Failed to append asset handlers, %v", err)
 	}
 
-	err = sfom_app.AppendEditorHandler(ctx, fl, mux)
+	err = sfom_app.AppendEditorHandlerIfEnabled(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append editor handler, %v", err)
@@ -66,7 +66,7 @@ func main() {
 		log.Fatalf("Failed to append proxy tiles handler, %v", err)
 	}
 
-	err = sfom_app.AppendWriterHandler(ctx, fl, mux)
+	err = sfom_app.AppendWriterHandlerIfEnabled(ctx, fl, mux)
 
 	if err != nil {
 		log.Fatalf("Failed to append writer handler, %v", err)
