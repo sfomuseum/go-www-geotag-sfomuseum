@@ -62,6 +62,11 @@ window.addEventListener("load", function load(event){
 		if (wk_webview == "true"){
 
 		    console.log("WEBKIT IT UP...");
+
+		    if (! sfomuseum.webkit.isAuth()){
+			console.log("Not authenticated");
+			return;
+		    }
 		    
 		    try {
 			var body = JSON.stringify(rsp);

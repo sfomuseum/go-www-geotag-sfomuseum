@@ -2,11 +2,18 @@ var sfomuseum = sfomuseum || {};
 
 sfomuseum.webkit = (function(){
 
+    var _isauth = false;
+    
     var self = {
 
-	'hasAuth': function(){
-	    alert("AUTH!");
+	'setAuthOkay': function(){
+	    _isauth = true;
 	},
+
+	'isAuth': function(){
+	    return _isauth;
+	},
+	
     };
 
     return self;
