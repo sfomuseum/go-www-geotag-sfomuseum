@@ -65,7 +65,7 @@ window.addEventListener("load", function load(event){
 		    
 		    try {
 			var body = JSON.stringify(rsp);
-			var wk_rsp = webkit.messageHandlers.geotagImage.postMessage(body);
+			var wk_rsp = webkit.messageHandlers.publishData.postMessage(body);
 			console.log("WEBKIT RESPONSE", wk_rsp);
 		    } catch(e) {
 			console.log("SAD", e);
