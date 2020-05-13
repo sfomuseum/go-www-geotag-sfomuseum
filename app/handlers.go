@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"flag"
+	"github.com/rs/cors"
 	"github.com/sfomuseum/go-flags"
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 	oauth2_www "github.com/sfomuseum/go-http-oauth2/www"
@@ -11,6 +12,7 @@ import (
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
 	_ "log"
 	"net/http"
+	"strings"
 )
 
 func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
@@ -120,16 +122,49 @@ func NewWriterHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
+	disable_writer_crumb, err := flags.BoolVar(fs, "disable-writer-crumb")
+
+	if err != nil {
+		return nil, err
+	}
+
+	enable_writer_cors, err := flags.BoolVar(fs, "enable-writer-cors")
+
+	if err != nil {
+		return nil, err
+	}
+
+	allowed_origins_str, err := flags.StringVar(fs, "writer-cors-allowed-origins")
+
+	if err != nil {
+		return nil, err
+	}
+
 	handler, err := sfom_api.WriterHandler(writer_uri)
 
 	if err != nil {
 		return nil, err
 	}
 
-	handler, err = geotag_app.AppendCrumbHandler(ctx, fs, handler)
+	if !disable_writer_crumb {
 
-	if err != nil {
-		return nil, err
+		handler, err = geotag_app.AppendCrumbHandler(ctx, fs, handler)
+
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	if enable_writer_cors {
+
+		allowed_origins := strings.Split(allowed_origins_str, ",")
+
+		cors_handler := cors.New(cors.Options{
+			AllowedOrigins: allowed_origins,
+			AllowedMethods: []string{"PUT"},
+		})
+
+		handler = cors_handler.Handler(handler)
 	}
 
 	if enable_oauth2 {
