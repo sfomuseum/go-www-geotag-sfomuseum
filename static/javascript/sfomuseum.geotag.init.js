@@ -13,6 +13,18 @@ window.addEventListener("load", function load(event){
 
     map.addControl(layers_control);
 
+    var feedback = document.createElement("ul");
+    document.body.appendChild(feedback);
+
+    var log = function(msg){
+
+	console.log(msg);
+	
+	var item = document.createElement("li");
+	item.appendChild(document.createTextNode(JSON.stringify(msg)));
+	feedback.prepend(item);
+    };
+    
     // https://stackoverflow.com/questions/50229935/wkwebview-get-javascript-errors
 
     window.onerror = (msg, url, line, column, error) => {
@@ -55,35 +67,35 @@ window.addEventListener("load", function load(event){
 	    
 	    var on_success = function(data){
 		
-		console.log("WRITE OKAY");
+		log("WRITE OKAY");
+		log(data);
 		
 		try {
                     JSON.parse(data);
                 }
 
 		catch (e){
-                    console.log("PARSE ERROR", e);
+                    log("PARSE ERROR", e);
 		    return;
 		}
 
-		console.log("OKAY");
-		console.log(data);
+		log("OKAY");
 		
 		var wk_webview = document.body.getAttribute("data-enable-wk-webview");
 
 		if (wk_webview == "true"){
 
-		    console.log("WEBKIT IT UP...");
+		    log("WEBKIT IT UP...");
 
 		    if (! sfomuseum.webkit.isAuth()){
-			console.log("Not authenticated");
+			log("Not authenticated");
 			return;
 		    }
 		    
 		    try {
 			webkit.messageHandlers.publishData.postMessage(data);
 		    } catch(e) {
-			console.log("SAD", e);
+			log("SAD", e);
 		    }
 
 		    console.log("DONE");
