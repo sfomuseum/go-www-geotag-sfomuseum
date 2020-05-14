@@ -110,6 +110,8 @@ func WriterHandler(wr_uri string) (http.Handler, error) {
 			return
 		}
 
+		rsp.Header().Set("Content-Type", "application/json")
+
 		err = wr.WriteFeature(ctx, uid, geotag_f)
 
 		if err != nil {

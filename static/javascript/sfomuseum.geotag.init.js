@@ -53,10 +53,22 @@ window.addEventListener("load", function load(event){
 	    
             var fov = camera.getFieldOfView();
 	    
-	    var on_success = function(rsp){
+	    var on_success = function(data){
 		
-		console.log("WRITE OKAY", rsp);
+		console.log("WRITE OKAY");
+		
+		try {
+                    JSON.parse(data);
+                }
 
+		catch (e){
+                    console.log("PARSE ERROR", e);
+		    return;
+		}
+
+		console.log("OKAY");
+		console.log(data);
+		
 		var wk_webview = document.body.getAttribute("data-enable-wk-webview");
 
 		if (wk_webview == "true"){
@@ -69,10 +81,7 @@ window.addEventListener("load", function load(event){
 		    }
 		    
 		    try {
-			var body = JSON.stringify(rsp);
-			
-			var wk_rsp = webkit.messageHandlers.publishData.postMessage(body);
-			console.log("WEBKIT RESPONSE", wk_rsp);
+			webkit.messageHandlers.publishData.postMessage(data);
 		    } catch(e) {
 			console.log("SAD", e);
 		    }
