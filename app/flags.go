@@ -24,9 +24,6 @@ func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
 		return err
 	}
 
-	fs.Bool("enable-wk-webview", false, "Enable support to operate in a WKWebView context.")
-	fs.String("wk-webview-handler", "", "The name of the WKScriptMessageHandler to dispatch geotag updates to.")
-
 	fs.String("oauth2-access-token", "", "...")
 
 	return nil

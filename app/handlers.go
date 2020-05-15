@@ -62,12 +62,6 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return err
 	}
 
-	enable_webview, err := flags.BoolVar(fs, "enable-wk-webview")
-
-	if err != nil {
-		return err
-	}
-
 	oauth2_access_token, err := flags.StringVar(fs, "oauth2-access-token")
 
 	if err != nil {
@@ -78,11 +72,6 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 
 	if oauth2_access_token != "" {
 		editor_opts.DataAttributes["oauth2-access-token"] = oauth2_access_token
-	}
-
-	if enable_webview {
-		editor_opts.DataAttributes["enable-wk-webview"] = "true"
-		editor_opts.JS = append(editor_opts.JS, "/javascript/sfomuseum.webkit.js")
 	}
 
 	handler = sfom_www.AppendResourcesHandler(handler, editor_opts)

@@ -1,6 +1,4 @@
 window.addEventListener("load", function load(event){
-
-    sfomuseum.console.log("INIT");
     
     var map = geotag.maps.getMapById("map");
 
@@ -15,24 +13,6 @@ window.addEventListener("load", function load(event){
 
     map.addControl(layers_control);
     
-    // https://stackoverflow.com/questions/50229935/wkwebview-get-javascript-errors
-
-    window.onerror = (msg, url, line, column, error) => {
-	const message = {
-	    message: msg,
-	    url: url,
-	    line: line,
-	    column: column,
-	    error: JSON.stringify(error)
-	}
-	
-	if (window.webkit) {
-	    window.webkit.messageHandlers.error.postMessage(message);
-	} else {
-	    console.log("Error:", message);
-	}
-    };
-
     var save = document.getElementById("writer-save");
 
     if (save){
@@ -63,6 +43,7 @@ window.addEventListener("load", function load(event){
 
 		catch (e){
                     sfomuseum.console.log("PARSE ERROR", e);
+		    console.log(data, e);
 		    return;
 		}
 
@@ -85,7 +66,7 @@ window.addEventListener("load", function load(event){
                     sfomuseum.console.log("REPO ERROR", e);
 		    return;
 		}
-		
+
 		var features = feature_collection["features"];
 		var count = features.length;
 
@@ -124,8 +105,9 @@ window.addEventListener("load", function load(event){
 			console.log(error);
 			console.log(result);
 		    };
-		    
-		    repo.getContents(branch, path, true, cb)
+
+		    console.log("GET CONTENTS", path);
+		    repo.getContents(branch, path, true, contents_cb)
 		    continue;
 
 		    
@@ -146,7 +128,8 @@ window.addEventListener("load", function load(event){
 		}
 
 		return;
-		
+
+		/*
 		var wk_webview = document.body.getAttribute("data-enable-wk-webview");
 
 		if (wk_webview == "true"){
@@ -166,6 +149,7 @@ window.addEventListener("load", function load(event){
 
 		    console.log("DONE");
 		}
+		*/
 		
 	    };
 	    
