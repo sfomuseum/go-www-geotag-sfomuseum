@@ -73,17 +73,18 @@ window.addEventListener("load", function load(event){
 		    return;
 		}
 		
-		sfomuseum.console.log("GEOTAG TOKEN", access_token.length);
-		
 		var auth = {
 		    token: access_token,
 		};
 
-		// https://github-tools.github.io/github/docs/3.2.3/Repository.html
-
 		var gh = new GitHub(auth);
 
-		var repo = gh.getRepo("sfomuseum-data", "sfomuseum-data-collection");
+		try {
+		    var repo = gh.getRepo("sfomuseum-data", "sfomuseum-data-collection");
+		} catch (e) {
+                    sfomuseum.console.log("REPO ERROR", e);
+		    return;
+		}
 		
 		var features = feature_collection["features"];
 		var count = features.length;
@@ -96,8 +97,6 @@ window.addEventListener("load", function load(event){
 		    var id = props["wof:id"];
 		    var uri_args = {};
 
-		    console.log(props);
-		    
 		    if (props["src:alt_label"]){
 
 			var alt_parts = props["src:alt_label"].split("-");
@@ -113,14 +112,18 @@ window.addEventListener("load", function load(event){
 		    var path = "data/" + uri;
 		    
 		    var branch = "master";
-		    var content = f;
+		    var content = JSON.stringify(f);
 
-		    var message = "...";
+		    var message = "Update geotagging information for " + props["wof:name"] + " (" + id + ")";
 		    var opts = {};
 
 		    var cb = function(error, result, request){
-			console.log("GH CB", error, result);
+			sfomuseum.console.log("CALLBACK FOR " + path);
+			sfomuseum.console.log(error);
+			sfomuseum.console.log(result);			
 		    };
+
+		    sfomuseum.console.log("WRITE" + path);
 		    
 		    repo.writeFile(branch, path, content, message, opts, cb)
 		}
