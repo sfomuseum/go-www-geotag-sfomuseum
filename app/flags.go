@@ -24,6 +24,7 @@ func AppendSFOMuseumFlags(fs *flag.FlagSet) error {
 		return err
 	}
 
+	fs.Bool("enable-wk-webview", false, "Enable support to operate in a WKWebView context.")
 	fs.String("oauth2-access-token", "", "...")
 
 	return nil

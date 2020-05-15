@@ -56,7 +56,7 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return err
 	}
 
-	handler, err := geotag_app.NewEditorHandler(ctx, fs)
+	enable_webview, err := flags.BoolVar(fs, "enable-wk-webview")
 
 	if err != nil {
 		return err
@@ -68,10 +68,20 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return err
 	}
 
+	handler, err := geotag_app.NewEditorHandler(ctx, fs)
+
+	if err != nil {
+		return err
+	}
+
 	editor_opts := sfom_www.DefaultEditorOptions()
 
 	if oauth2_access_token != "" {
 		editor_opts.DataAttributes["oauth2-access-token"] = oauth2_access_token
+	}
+
+	if enable_webview {
+		editor_opts.DataAttributes["enable-wk-webview"] = "true"
 	}
 
 	handler = sfom_www.AppendResourcesHandler(handler, editor_opts)
