@@ -67,7 +67,7 @@ window.addEventListener("load", function load(event){
 		}
 
 		var access_token = document.body.getAttribute("data-oauth2-access-token");
-
+		
 		if (! access_token){
 		    sfomuseum.console.log("MISSING ACCESS TOKEN");
 		    return;
@@ -110,8 +110,25 @@ window.addEventListener("load", function load(event){
 
 		    var uri = whosonfirst.uri.id2relpath(id, uri_args);
 		    var path = "data/" + uri;
-		    
+
+		    // https://github-tools.github.io/github/docs/3.2.3/Repository.html#getContents
+		    // https://developer.github.com/v3/repos/contents/#get-contents
+
+		    // https://github-tools.github.io/github/docs/3.2.3/Repository.html#writeFile
+
 		    var branch = "master";
+		    
+		    var contents_cb = function(error, result, request){
+
+			console.log("GOT CONTENTS FOR ", path);
+			console.log(error);
+			console.log(result);
+		    };
+		    
+		    repo.getContents(branch, path, true, cb)
+		    continue;
+
+		    
 		    var content = JSON.stringify(f);
 
 		    var message = "Update geotagging information for " + props["wof:name"] + " (" + id + ")";

@@ -20,11 +20,11 @@ func DefaultEditorOptions() *ResourceOptions {
 		CSS: []string{},
 		JS: []string{
 			"/javascript/sfomuseum.maps.js",
-			"/javascript/sfomuseum.console.js",			
+			"/javascript/sfomuseum.console.js",
 			"/javascript/sfomuseum.webkit.js",
 			"/javascript/sfomuseum.geotag.init.js",
-			"/javascript/whosonfirst.uri.js",			
-			"/javascript/github.bundle.min.js",		// https://github.com/github-tools/github			
+			"/javascript/whosonfirst.uri.js",
+			"/javascript/github.bundle.min.js", // https://github.com/github-tools/github
 		},
 		DataAttributes: make(map[string]string),
 	}
