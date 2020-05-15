@@ -67,11 +67,8 @@ window.addEventListener("load", function load(event){
 	    
 	    var on_success = function(data){
 		
-		log("WRITE OKAY");
-		log(data);
-		
 		try {
-                    JSON.parse(data);
+                    var feature_collection = JSON.parse(data);
                 }
 
 		catch (e){
@@ -79,7 +76,59 @@ window.addEventListener("load", function load(event){
 		    return;
 		}
 
-		log("OKAY");
+		var access_token = "DEBUG";
+		
+		var auth = {
+		    token: access_token,
+		};
+
+		// https://github-tools.github.io/github/docs/3.2.3/Repository.html
+
+		var gh = new GitHub(auth);
+
+		var repo = gh.getRepo("sfomuseum-data", "sfomuseum-data-collection");
+		
+		var features = feature_collection["features"];
+		var count = features.length;
+
+		for (var i=0; i < count; i++){
+
+		    var f = features[i];
+		    var props = f["properties"];
+
+		    var id = props["wof:id"];
+		    var uri_args = {};
+
+		    console.log(props);
+		    
+		    if (props["src:alt_label"]){
+
+			var alt_parts = props["src:alt_label"].split("-");
+
+			uri_args = {
+			    "alt": true,
+			    "source": alt_parts[0],
+			    "function": alt_parts[1]
+			};
+		    }
+
+		    var uri = whosonfirst.uri.id2relpath(id, uri_args);
+		    var path = "data/" + uri;
+		    
+		    var branch = "master";
+		    var content = f;
+
+		    var message = "...";
+		    var opts = {};
+
+		    var cb = function(error, result, request){
+			console.log("GH CB", error, result);
+		    };
+		    
+		    repo.writeFile(branch, path, content, message, opts, cb)
+		}
+
+		return;
 		
 		var wk_webview = document.body.getAttribute("data-enable-wk-webview");
 
