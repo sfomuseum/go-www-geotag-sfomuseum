@@ -1,5 +1,7 @@
 window.addEventListener("load", function load(event){
 
+    sfomuseum.console.log("INIT");
+    
     var map = geotag.maps.getMapById("map");
 
     if (! map){
@@ -12,18 +14,6 @@ window.addEventListener("load", function load(event){
     });
 
     map.addControl(layers_control);
-
-    var feedback = document.createElement("ul");
-    document.body.appendChild(feedback);
-
-    var log = function(msg){
-
-	console.log(msg);
-	
-	var item = document.createElement("li");
-	item.appendChild(document.createTextNode(JSON.stringify(msg)));
-	feedback.prepend(item);
-    };
     
     // https://stackoverflow.com/questions/50229935/wkwebview-get-javascript-errors
 
@@ -72,11 +62,18 @@ window.addEventListener("load", function load(event){
                 }
 
 		catch (e){
-                    log("PARSE ERROR", e);
+                    sfomuseum.console.log("PARSE ERROR", e);
 		    return;
 		}
 
-		var access_token = "DEBUG";
+		var access_token = document.body.getAttribute("data-oauth2-access-token");
+
+		if (! access_token){
+		    sfomuseum.console.log("MISSING ACCESS TOKEN");
+		    return;
+		}
+		
+		sfomuseum.console.log("GEOTAG TOKEN", access_token.length);
 		
 		var auth = {
 		    token: access_token,
@@ -134,17 +131,17 @@ window.addEventListener("load", function load(event){
 
 		if (wk_webview == "true"){
 
-		    log("WEBKIT IT UP...");
+		    sfomuseum.console.log("WEBKIT IT UP...");
 
 		    if (! sfomuseum.webkit.isAuth()){
-			log("Not authenticated");
+			sfomuseum.console.log("Not authenticated");
 			return;
 		    }
 		    
 		    try {
 			webkit.messageHandlers.publishData.postMessage(data);
 		    } catch(e) {
-			log("SAD", e);
+			sfomuseum.console.log("SAD", e);
 		    }
 
 		    console.log("DONE");

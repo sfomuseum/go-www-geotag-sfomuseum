@@ -20,6 +20,7 @@ func DefaultEditorOptions() *ResourceOptions {
 		CSS: []string{},
 		JS: []string{
 			"/javascript/sfomuseum.maps.js",
+			"/javascript/sfomuseum.console.js",			
 			"/javascript/sfomuseum.webkit.js",
 			"/javascript/sfomuseum.geotag.init.js",
 			"/javascript/whosonfirst.uri.js",			
