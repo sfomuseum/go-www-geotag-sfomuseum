@@ -54,19 +54,6 @@ window.addEventListener("load", function load(event){
 		    return;
 		}
 		
-		var auth = {
-		    token: access_token,
-		};
-
-		var gh = new GitHub(auth);
-
-		try {
-		    var repo = gh.getRepo("sfomuseum-data", "sfomuseum-data-collection");
-		} catch (e) {
-                    sfomuseum.console.log("REPO ERROR", e);
-		    return;
-		}
-
 		var features = feature_collection["features"];
 		var count = features.length;
 
@@ -92,39 +79,30 @@ window.addEventListener("load", function load(event){
 		    var uri = whosonfirst.uri.id2relpath(id, uri_args);
 		    var path = "data/" + uri;
 
-		    // https://github-tools.github.io/github/docs/3.2.3/Repository.html#getContents
-		    // https://developer.github.com/v3/repos/contents/#get-contents
-
-		    // https://github-tools.github.io/github/docs/3.2.3/Repository.html#writeFile
-
 		    var branch = "master";
 		    
-		    var contents_cb = function(error, result, request){
+		    var enc_content = sfomuseum.github.encode(f);
+		    
+		    // var enc_content = Buffer.from(content).toString("base64");
+		    
+		    var message = "Add geotagging information for " + id;
 
-			console.log("GOT CONTENTS FOR ", path);
-			console.log(error);
-			console.log(result);
+		    var args = {
+			'content': enc_content,
+			'message': message,
+			'branch': branch,
 		    };
 
-		    console.log("GET CONTENTS", path);
-		    repo.getContents(branch, path, true, contents_cb)
-		    continue;
-
-		    
-		    var content = JSON.stringify(f);
-
-		    var message = "Update geotagging information for " + props["wof:name"] + " (" + id + ")";
-		    var opts = {};
-
-		    var cb = function(error, result, request){
-			sfomuseum.console.log("CALLBACK FOR " + path);
-			sfomuseum.console.log(error);
-			sfomuseum.console.log(result);			
+		    var on_success = function(rsp){
+			console.log("WRITE OKAY", rsp);
 		    };
 
-		    sfomuseum.console.log("WRITE" + path);
-		    
-		    repo.writeFile(branch, path, content, message, opts, cb)
+		    var on_error = function(err){
+			console.log("WRITE ERROR", err);
+		    };
+
+		    sfomuseum.github.setAccessToken(access_token);
+		    sfomuseum.github.updateFile(branch, path, args, on_success, on_error);
 		}
 
 		return;
@@ -156,7 +134,7 @@ window.addEventListener("load", function load(event){
             var on_error = function(err){
 		console.log("WRITE ERROR", err);
 	    };
-	    
+
             geotag.writer.write_geotag(uri, fov, on_success, on_error);
 	    return false;
 	};
