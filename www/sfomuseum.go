@@ -25,6 +25,7 @@ func DefaultEditorOptions() *ResourceOptions {
 			"/javascript/sfomuseum.github.js",			
 			"/javascript/sfomuseum.geotag.init.js",
 			"/javascript/whosonfirst.uri.js",
+			"/javascript/base64.min.js",			
 		},
 		DataAttributes: make(map[string]string),
 	}

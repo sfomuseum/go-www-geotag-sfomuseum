@@ -80,15 +80,14 @@ window.addEventListener("load", function load(event){
 		    var path = "data/" + uri;
 
 		    var branch = "master";
-		    
-		    var enc_content = sfomuseum.github.encode(f);
-		    
-		    // var enc_content = Buffer.from(content).toString("base64");
+
+		    var str_f = JSON.stringify(f, "", 2);
+		    var enc_f = Base64.encode(str_f);	// https://github.com/dankogai/js-base64
 		    
 		    var message = "Add geotagging information for " + id;
 
 		    var args = {
-			'content': enc_content,
+			'content': enc_f,
 			'message': message,
 			'branch': branch,
 		    };
