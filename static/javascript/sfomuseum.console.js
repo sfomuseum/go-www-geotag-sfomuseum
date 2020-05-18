@@ -12,9 +12,13 @@ sfomuseum.console = (function(){
 		_feedback = document.createElement("ul");
 		document.body.appendChild(_feedback);
 	    }
+
+	    if (typeof(msg) != "string"){
+		msg = JSON.stringify(msg);
+	    }
 	    
 	    var item = document.createElement("li");
-	    item.appendChild(document.createTextNode(JSON.stringify(msg)));
+	    item.appendChild(document.createTextNode(msg));	    
 	    _feedback.prepend(item);
 
 	    console.log(msg);

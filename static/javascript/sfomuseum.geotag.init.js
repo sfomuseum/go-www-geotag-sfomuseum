@@ -36,14 +36,15 @@ window.addEventListener("load", function load(event){
             var fov = camera.getFieldOfView();
 	    
 	    var on_success = function(data){
+
+		// sfomuseum.console.log("'" + data + "'");
 		
 		try {
                     var feature_collection = JSON.parse(data);
                 }
 
 		catch (e){
-                    sfomuseum.console.log("PARSE ERROR", e);
-		    console.log(data, e);
+                    sfomuseum.console.log(e);		    
 		    return;
 		}
 
@@ -53,7 +54,7 @@ window.addEventListener("load", function load(event){
 		    sfomuseum.console.log("MISSING ACCESS TOKEN");
 		    return;
 		}
-		
+
 		var features = feature_collection["features"];
 
 		var update_features = function(features) {
@@ -102,7 +103,7 @@ window.addEventListener("load", function load(event){
 
 		    var on_success = function(rsp){
 			
-			console.log("WRITE OKAY");
+			sfomuseum.console.log("Successfully wrote " + uri);
 
 			// see above wrt/ sequential updates
 			
@@ -113,7 +114,7 @@ window.addEventListener("load", function load(event){
 		    };
 
 		    var on_error = function(err){
-			sfomuseum.console.log("Failed to write " + id + ", " + err);
+			sfomuseum.console.log("Failed to write " + uri + ", " + err);
 		    };
 
 		    sfomuseum.github.setAccessToken(access_token);
@@ -127,6 +128,8 @@ window.addEventListener("load", function load(event){
 		console.log("WRITE ERROR", err);
 	    };
 
+	    sfomuseum.console.log("WRITE GEOTAG");
+	    
             geotag.writer.write_geotag(uri, fov, on_success, on_error);
 	    return false;
 	};
