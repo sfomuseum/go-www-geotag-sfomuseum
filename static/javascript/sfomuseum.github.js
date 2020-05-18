@@ -1,7 +1,13 @@
+// this is not a fully-fledge github API client - it only does enough to
+// add or update files per these methods:
 // https://developer.github.com/v3/repos/contents/#get-contents
 // https://developer.github.com/v3/repos/contents/#create-or-update-a-file
+// (2020518/thisisaaronland)
 
+// I tried to use this but I could never get it to return an actual SHA
+// value for a file and it didn't look like I could assign it for update
 // https://github-tools.github.io/github/docs/3.2.3/
+// (20200518/thisisaaronland)
 
 var sfomuseum = sfomuseum || {};
 
@@ -13,23 +19,6 @@ sfomuseum.github = (function(){
 
 	'setAccessToken': function(token){
 	    _access_token = token;
-	},
-
-	'toBinary': function(string) {
-	    const codeUnits = new Uint16Array(string.length);
-	    for (let i = 0; i < codeUnits.length; i++) {
-		codeUnits[i] = string.charCodeAt(i);
-	    }
-	    return String.fromCharCode(...new Uint8Array(codeUnits.buffer));
-	},
-
-	// https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa
-
-	'encode': function(o){
-
-	    var content = JSON.stringify(o, "", 2);
-	    // var bin = self.toBinary(content);
-	    return btoa(content);
 	},
 	
 	'updateFile': function(branch, path, args, on_success, on_error) {
@@ -95,8 +84,6 @@ sfomuseum.github = (function(){
 	},
 
 	'writeFile': function(branch, path, args, on_success, on_error){
-
-	    console.log("WRITE", path, args);
 
 	    var form_data = JSON.stringify(args);
 	    

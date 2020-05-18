@@ -55,11 +55,19 @@ window.addEventListener("load", function load(event){
 		}
 		
 		var features = feature_collection["features"];
-		var count = features.length;
 
-		for (var i=0; i < count; i++){
+		var update_features = function(features) {
 
-		    var f = features[i];
+		    if (features.length == 0){
+			return;
+		    }
+
+		    // we are updating features one at a time so we don't
+		    // confuse Git(Hub) with simultaneous commits and mismatched
+		    // hashes for HEAD (20200518/thisisaaronland)
+		    
+		    var f = features.shift();
+
 		    var props = f["properties"];
 
 		    var id = props["wof:id"];
@@ -93,41 +101,26 @@ window.addEventListener("load", function load(event){
 		    };
 
 		    var on_success = function(rsp){
-			console.log("WRITE OKAY", rsp);
+			
+			console.log("WRITE OKAY");
+
+			// see above wrt/ sequential updates
+			
+			if (features.length){
+			    update_features(features);
+			}
+			
 		    };
 
 		    var on_error = function(err){
-			console.log("WRITE ERROR", err);
+			sfomuseum.console.log("Failed to write " + id + ", " + err);
 		    };
 
 		    sfomuseum.github.setAccessToken(access_token);
 		    sfomuseum.github.updateFile(branch, path, args, on_success, on_error);
-		}
-
-		return;
-
-		/*
-		var wk_webview = document.body.getAttribute("data-enable-wk-webview");
-
-		if (wk_webview == "true"){
-
-		    sfomuseum.console.log("WEBKIT IT UP...");
-
-		    if (! sfomuseum.webkit.isAuth()){
-			sfomuseum.console.log("Not authenticated");
-			return;
-		    }
-		    
-		    try {
-			webkit.messageHandlers.publishData.postMessage(data);
-		    } catch(e) {
-			sfomuseum.console.log("SAD", e);
-		    }
-
-		    console.log("DONE");
-		}
-		*/
+		};
 		
+		update_features(features);
 	    };
 	    
             var on_error = function(err){
