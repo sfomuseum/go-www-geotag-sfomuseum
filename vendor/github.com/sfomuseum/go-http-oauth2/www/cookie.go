@@ -9,8 +9,8 @@ import (
 	"github.com/aaronland/go-http-sanitize"
 	"github.com/awnumar/memguard"
 	"github.com/sfomuseum/go-http-oauth2"
-	goog_oauth2 "golang.org/x/oauth2"
 	"golang.org/x/net/html"
+	goog_oauth2 "golang.org/x/oauth2"
 	"io"
 	_ "log"
 	"net/http"
@@ -284,7 +284,7 @@ func AppendAccessTokenFromCookieHandler(opts *oauth2.Options, next_handler http.
 
 		if token == nil {
 			next_handler.ServeHTTP(rsp, req)
-			return 
+			return
 		}
 
 		rewrite_func := NewAccessTokenRewriteFunc(token)
@@ -301,9 +301,9 @@ func NewAccessTokenRewriteFunc(token *goog_oauth2.Token) rewrite.RewriteHTMLFunc
 	var rewrite_func rewrite.RewriteHTMLFunc
 
 	rewrite_func = func(n *html.Node, w io.Writer) {
-		
+
 		if n.Type == html.ElementNode && n.Data == "body" {
-			
+
 			token_ns := ""
 			token_key := "data-access-token"
 			token_value := token.AccessToken
@@ -314,7 +314,7 @@ func NewAccessTokenRewriteFunc(token *goog_oauth2.Token) rewrite.RewriteHTMLFunc
 
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
 			rewrite_func(c, w)
-		}		
+		}
 	}
 
 	return rewrite_func
