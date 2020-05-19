@@ -33,6 +33,28 @@ $> bin/server \
 2020/05/05 11:42:40 Listening on https://localhost:8080
 ```
 
+Alternately you can set the `-enable-oauth2-access-token-attribute` flag (and corresponding `-whosonfirst-writer-uri 'featurecollection-io://?count_features=2'` or equivalent flag) which will cause the application to publish data on the client side, as described in the [Geotagging at SFO Museum, part 10 – Native Applications](https://millsfield.sfomuseum.org/blog/2020/05/18/geotagging-native/) blog post.
+
+```
+$> bin/server \
+	-nextzen-apikey {NEXTZEN_API_KEY} \
+	-enable-writer \
+	-enable-oembed \
+	-oembed-endpoints 'https://millsfield.sfomuseum.org/oembed?url={url}' \	
+	-writer-uri 'whosonfirst://?writer={whosonfirst_writer}&reader={whosonfirst_reader}&update=1&update=1&source=sfomuseum' \
+	-whosonfirst-writer-uri 'featurecollection-io://?count_features=2' \
+	-whosonfirst-reader-uri 'github://sfomuseum-data/sfomuseum-data-collection' \
+	-enable-oauth2 \
+	-oauth2-scopes repo \
+	-oauth2-client-id "constant://?val={OAUTH2_CLIENT_ID}&decoder=string" \
+	-oauth2-client-secret "constant://?val={OAUTH2_SECRET}&decoder=string" \
+	-oauth2-cookie-uri "constant://?val=debug&decoder=string" \
+	-enable-oauth2-access-token-attribute \
+	-server-uri 'mkcert://localhost:8080'
+2020/05/19 16:21:35 Checking whether mkcert is installed. If it is not you may be prompted for your password (in order to install certificate files
+2020/05/19 16:21:37 Listening on https://localhost:8080
+```
+
 ## See also
 
 * https://github.com/sfomuseum/go-www-geotag

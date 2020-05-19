@@ -241,6 +241,8 @@ github.com/sfomuseum/go-http-oauth2 v0.0.5 h1:8OGRx2FtqrL3TmCINgUe1sbokHr54X7QM2
 github.com/sfomuseum/go-http-oauth2 v0.0.5/go.mod h1:4s1KBr55s8QyKniE5h7Yf5DKaX20eL10BRF1qvWJNZo=
 github.com/sfomuseum/go-http-oauth2 v0.0.6 h1:13ofN2EkywmbjVJfti3PIzVfr93wnAuuFEOg9G3vZvA=
 github.com/sfomuseum/go-http-oauth2 v0.0.6/go.mod h1:HYTa9h0Oy8QRvctV8rZyf8QFGatT1KlXm5UQ0RJMXp8=
+github.com/sfomuseum/go-http-oauth2 v0.0.7 h1:HRWwEKNp+U7TglHTWieFjyl0EUCMt+pOfLqgYf3XLag=
+github.com/sfomuseum/go-http-oauth2 v0.0.7/go.mod h1:HYTa9h0Oy8QRvctV8rZyf8QFGatT1KlXm5UQ0RJMXp8=
 github.com/sfomuseum/go-http-tilezen v0.0.4 h1:VtgK1o0e4orgLthumMLZ3NcZHHJakixRMPphmSGiKDQ=
 github.com/sfomuseum/go-http-tilezen v0.0.4/go.mod h1:3KWUDN2cHiSWjRaI4wrt5FKa/EEsNcsOeh5GIgWTrBw=
 github.com/sfomuseum/go-tilezen v0.0.3 h1:B6BSBHTtno1MvtTMyNRhIK+MMaBQOml0AFoz+Uw8u5o=
