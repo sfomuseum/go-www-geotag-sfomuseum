@@ -4,7 +4,7 @@ import (
 	"context"
 	"flag"
 	"github.com/rs/cors"
-	"github.com/sfomuseum/go-flags"
+	"github.com/sfomuseum/go-flags/lookup"
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 	oauth2_www "github.com/sfomuseum/go-http-oauth2/www"
 	sfom_api "github.com/sfomuseum/go-www-geotag-sfomuseum/api"
@@ -34,7 +34,7 @@ func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 
 func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
 
-	enable_editor, err := flags.BoolVar(fs, "enable-editor")
+	enable_editor, err := lookup.BoolVar(fs, "enable-editor")
 
 	if err != nil {
 		return err
@@ -44,25 +44,25 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return nil
 	}
 
-	enable_oauth2, err := flags.BoolVar(fs, "enable-oauth2")
+	enable_oauth2, err := lookup.BoolVar(fs, "enable-oauth2")
 
 	if err != nil {
 		return err
 	}
 
-	path, err := flags.StringVar(fs, "path-editor")
+	path, err := lookup.StringVar(fs, "path-editor")
 
 	if err != nil {
 		return err
 	}
 
-	enable_webview, err := flags.BoolVar(fs, "enable-wk-webview")
+	enable_webview, err := lookup.BoolVar(fs, "enable-wk-webview")
 
 	if err != nil {
 		return err
 	}
 
-	oauth2_access_token, err := flags.StringVar(fs, "oauth2-access-token")
+	oauth2_access_token, err := lookup.StringVar(fs, "oauth2-access-token")
 
 	if err != nil {
 		return err
@@ -103,7 +103,7 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 
 func AppendWriterHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
 
-	enable_editor, err := flags.BoolVar(fs, "enable-writer")
+	enable_editor, err := lookup.BoolVar(fs, "enable-writer")
 
 	if err != nil {
 		return err
@@ -113,7 +113,7 @@ func AppendWriterHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return nil
 	}
 
-	path, err := flags.StringVar(fs, "path-writer")
+	path, err := lookup.StringVar(fs, "path-writer")
 
 	if err != nil {
 		return err
@@ -131,31 +131,31 @@ func AppendWriterHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 
 func NewWriterHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, error) {
 
-	writer_uri, err := flags.StringVar(fs, "writer-uri")
+	writer_uri, err := lookup.StringVar(fs, "writer-uri")
 
 	if err != nil {
 		return nil, err
 	}
 
-	enable_oauth2, err := flags.BoolVar(fs, "enable-oauth2")
+	enable_oauth2, err := lookup.BoolVar(fs, "enable-oauth2")
 
 	if err != nil {
 		return nil, err
 	}
 
-	disable_writer_crumb, err := flags.BoolVar(fs, "disable-writer-crumb")
+	disable_writer_crumb, err := lookup.BoolVar(fs, "disable-writer-crumb")
 
 	if err != nil {
 		return nil, err
 	}
 
-	enable_writer_cors, err := flags.BoolVar(fs, "enable-writer-cors")
+	enable_writer_cors, err := lookup.BoolVar(fs, "enable-writer-cors")
 
 	if err != nil {
 		return nil, err
 	}
 
-	allowed_origins_str, err := flags.StringVar(fs, "writer-cors-allowed-origins")
+	allowed_origins_str, err := lookup.StringVar(fs, "writer-cors-allowed-origins")
 
 	if err != nil {
 		return nil, err
@@ -203,7 +203,7 @@ func NewWriterHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 
 func AppendOAuth2HandlersIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
 
-	enabled, err := flags.BoolVar(fs, "enable-oauth2")
+	enabled, err := lookup.BoolVar(fs, "enable-oauth2")
 
 	if err != nil {
 		return err
@@ -213,13 +213,13 @@ func AppendOAuth2HandlersIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *h
 		return nil
 	}
 
-	path_auth, err := flags.StringVar(fs, "path-oauth2-auth")
+	path_auth, err := lookup.StringVar(fs, "path-oauth2-auth")
 
 	if err != nil {
 		return err
 	}
 
-	path_token, err := flags.StringVar(fs, "path-oauth2-token")
+	path_token, err := lookup.StringVar(fs, "path-oauth2-token")
 
 	if err != nil {
 		return err

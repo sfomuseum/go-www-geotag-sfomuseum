@@ -10,7 +10,7 @@ import (
 
 import (
 	"context"
-	"github.com/sfomuseum/go-flags"
+	"github.com/sfomuseum/go-flags/flagset"
 	sfom_app "github.com/sfomuseum/go-www-geotag-sfomuseum/app"
 	geotag_app "github.com/sfomuseum/go-www-geotag/app"
 	"log"
@@ -33,9 +33,9 @@ func main() {
 		log.Fatalf("Failed to append SFO Museum flags, %v", err)
 	}
 
-	flags.Parse(fl)
+	flagset.Parse(fl)
 
-	err = flags.SetFlagsFromEnvVarsWithFeedback(fl, "GEOTAG", true)
+	err = flagset.SetFlagsFromEnvVarsWithFeedback(fl, "GEOTAG", true)
 
 	if err != nil {
 		log.Fatalf("Failed to set flags from env vars, %v", err)

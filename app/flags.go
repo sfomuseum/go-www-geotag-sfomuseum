@@ -3,7 +3,7 @@ package app
 import (
 	"context"
 	"flag"
-	"github.com/sfomuseum/go-flags"
+	"github.com/sfomuseum/go-flags/lookup"
 	oauth2_flags "github.com/sfomuseum/go-http-oauth2/flags"
 	wof_app "github.com/sfomuseum/go-www-geotag-whosonfirst/app"
 	"gocloud.dev/runtimevar"
@@ -43,7 +43,7 @@ func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
 		return err
 	}
 
-	enable_oauth2, err := flags.BoolVar(fs, "enable-oauth2")
+	enable_oauth2, err := lookup.BoolVar(fs, "enable-oauth2")
 
 	if err != nil {
 		return err
@@ -51,19 +51,19 @@ func AssignSFOMuseumFlags(fs *flag.FlagSet) error {
 
 	if enable_oauth2 {
 
-		id_uri, err := flags.StringVar(fs, "oauth2-client-id")
+		id_uri, err := lookup.StringVar(fs, "oauth2-client-id")
 
 		if err != nil {
 			return err
 		}
 
-		secret_uri, err := flags.StringVar(fs, "oauth2-client-secret")
+		secret_uri, err := lookup.StringVar(fs, "oauth2-client-secret")
 
 		if err != nil {
 			return err
 		}
 
-		cookie_uri, err := flags.StringVar(fs, "oauth2-cookie-uri")
+		cookie_uri, err := lookup.StringVar(fs, "oauth2-cookie-uri")
 
 		if err != nil {
 			return err
