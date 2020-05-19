@@ -92,7 +92,7 @@ func staticJavascriptBase64MinJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/base64.min.js", size: 4745, mode: os.FileMode(420), modTime: time.Unix(1589822770, 0)}
+	info := bindataFileInfo{name: "static/javascript/base64.min.js", size: 4745, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -132,7 +132,7 @@ func staticJavascriptGithubBundleMinJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/github.bundle.min.js", size: 90179, mode: os.FileMode(420), modTime: time.Unix(499162500, 0)}
+	info := bindataFileInfo{name: "static/javascript/github.bundle.min.js", size: 90179, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -152,7 +152,7 @@ func staticJavascriptSfomuseumConsoleJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/sfomuseum.console.js", size: 523, mode: os.FileMode(420), modTime: time.Unix(1589830385, 0)}
+	info := bindataFileInfo{name: "static/javascript/sfomuseum.console.js", size: 523, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -172,7 +172,7 @@ func staticJavascriptSfomuseumGeotagInitJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/sfomuseum.geotag.init.js", size: 3067, mode: os.FileMode(420), modTime: time.Unix(1589831484, 0)}
+	info := bindataFileInfo{name: "static/javascript/sfomuseum.geotag.init.js", size: 3067, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -192,7 +192,7 @@ func staticJavascriptSfomuseumGithubJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/sfomuseum.github.js", size: 3383, mode: os.FileMode(420), modTime: time.Unix(1589824569, 0)}
+	info := bindataFileInfo{name: "static/javascript/sfomuseum.github.js", size: 3383, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -232,7 +232,7 @@ func staticJavascriptSfomuseumWebkitJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/sfomuseum.webkit.js", size: 739, mode: os.FileMode(420), modTime: time.Unix(1589827474, 0)}
+	info := bindataFileInfo{name: "static/javascript/sfomuseum.webkit.js", size: 739, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -252,7 +252,7 @@ func staticJavascriptWhosonfirstUriJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "static/javascript/whosonfirst.uri.js", size: 2192, mode: os.FileMode(420), modTime: time.Unix(1585242480, 0)}
+	info := bindataFileInfo{name: "static/javascript/whosonfirst.uri.js", size: 2192, mode: os.FileMode(420), modTime: time.Unix(1589831537, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
