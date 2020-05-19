@@ -95,6 +95,8 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		}
 
 		handler = oauth2_www.EnsureOAuth2TokenCookieHandler(opts, handler)
+
+		handler = oauth2_www.AppendAccessTokenFromCookieHandler(opts, handler)
 	}
 
 	mux.Handle(path, handler)

@@ -9,8 +9,8 @@ import (
 	"github.com/aaronland/go-http-sanitize"
 	"github.com/awnumar/memguard"
 	"github.com/sfomuseum/go-http-oauth2"
-	"golang.org/x/net/html"
 	goog_oauth2 "golang.org/x/oauth2"
+	"golang.org/x/net/html"
 	"io"
 	_ "log"
 	"net/http"
@@ -276,10 +276,10 @@ func OAuth2RemoveAccessTokenCookieHandler(opts *oauth2.Options) (http.Handler, e
 	return h, nil
 }
 
-func AppendAccessTokenHandler(opts *oauth2.Options, next_handler http.Handler) http.Handler {
+func AppendAccessTokenFromCookieHandler(opts *oauth2.Options, next_handler http.Handler) http.Handler {
 
 	fn := func(rsp http.ResponseWriter, req *http.Request) {
-
+		
 		token, err := GetOAuth2TokenFromCookie(opts, req)
 
 		if err != nil {
