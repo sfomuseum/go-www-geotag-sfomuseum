@@ -279,12 +279,12 @@ func OAuth2RemoveAccessTokenCookieHandler(opts *oauth2.Options) (http.Handler, e
 func AppendAccessTokenFromCookieHandler(opts *oauth2.Options, next_handler http.Handler) http.Handler {
 
 	fn := func(rsp http.ResponseWriter, req *http.Request) {
-		
-		token, err := GetOAuth2TokenFromCookie(opts, req)
 
-		if err != nil {
-			// http.Error(rsp, err.Error(), http.StatusInternalServerError)
-			return
+		token, _ := GetOAuth2TokenFromCookie(opts, req)
+
+		if token == nil {
+			next_handler.ServeHTTP(rsp, req)
+			return 
 		}
 
 		rewrite_func := NewAccessTokenRewriteFunc(token)
@@ -301,9 +301,9 @@ func NewAccessTokenRewriteFunc(token *goog_oauth2.Token) rewrite.RewriteHTMLFunc
 	var rewrite_func rewrite.RewriteHTMLFunc
 
 	rewrite_func = func(n *html.Node, w io.Writer) {
-
+		
 		if n.Type == html.ElementNode && n.Data == "body" {
-
+			
 			token_ns := ""
 			token_key := "data-access-token"
 			token_value := token.AccessToken
@@ -311,6 +311,10 @@ func NewAccessTokenRewriteFunc(token *goog_oauth2.Token) rewrite.RewriteHTMLFunc
 			token_attr := html.Attribute{token_ns, token_key, token_value}
 			n.Attr = append(n.Attr, token_attr)
 		}
+
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			rewrite_func(c, w)
+		}		
 	}
 
 	return rewrite_func

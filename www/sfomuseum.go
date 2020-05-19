@@ -22,10 +22,10 @@ func DefaultEditorOptions() *ResourceOptions {
 			"/javascript/sfomuseum.maps.js",
 			"/javascript/sfomuseum.console.js",
 			"/javascript/sfomuseum.webkit.js",
-			"/javascript/sfomuseum.github.js",			
+			"/javascript/sfomuseum.github.js",
 			"/javascript/sfomuseum.geotag.init.js",
 			"/javascript/whosonfirst.uri.js",
-			"/javascript/base64.min.js",			
+			"/javascript/base64.min.js",
 		},
 		DataAttributes: make(map[string]string),
 	}

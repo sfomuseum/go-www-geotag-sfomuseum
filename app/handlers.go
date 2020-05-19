@@ -44,19 +44,19 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		return nil
 	}
 
-	enable_oauth2, err := lookup.BoolVar(fs, "enable-oauth2")
-
-	if err != nil {
-		return err
-	}
-
 	path, err := lookup.StringVar(fs, "path-editor")
 
 	if err != nil {
 		return err
 	}
 
-	enable_webview, err := lookup.BoolVar(fs, "enable-wk-webview")
+	enable_oauth2, err := lookup.BoolVar(fs, "enable-oauth2")
+
+	if err != nil {
+		return err
+	}
+
+	enable_oauth2_attribute, err := lookup.BoolVar(fs, "enable-oauth2-access-token-attribute")
 
 	if err != nil {
 		return err
@@ -80,10 +80,6 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 		editor_opts.DataAttributes["oauth2-access-token"] = oauth2_access_token
 	}
 
-	if enable_webview {
-		editor_opts.DataAttributes["enable-wk-webview"] = "true"
-	}
-
 	handler = sfom_www.AppendResourcesHandler(handler, editor_opts)
 
 	if enable_oauth2 {
@@ -96,7 +92,9 @@ func AppendEditorHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *ht
 
 		handler = oauth2_www.EnsureOAuth2TokenCookieHandler(opts, handler)
 
-		handler = oauth2_www.AppendAccessTokenFromCookieHandler(opts, handler)
+		if enable_oauth2_attribute {
+			handler = oauth2_www.AppendAccessTokenFromCookieHandler(opts, handler)
+		}
 	}
 
 	mux.Handle(path, handler)
