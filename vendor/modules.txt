@@ -91,14 +91,14 @@ github.com/sfomuseum/go-http-oauth2/www
 github.com/sfomuseum/go-http-tilezen/http
 # github.com/sfomuseum/go-tilezen v0.0.3
 github.com/sfomuseum/go-tilezen
-# github.com/sfomuseum/go-www-geotag v0.0.16
+# github.com/sfomuseum/go-www-geotag v0.0.17
 github.com/sfomuseum/go-www-geotag/api
 github.com/sfomuseum/go-www-geotag/app
 github.com/sfomuseum/go-www-geotag/assets/templates
 github.com/sfomuseum/go-www-geotag/geo
 github.com/sfomuseum/go-www-geotag/writer
 github.com/sfomuseum/go-www-geotag/www
-# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.17
+# github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.18
 github.com/sfomuseum/go-www-geotag-whosonfirst/app
 github.com/sfomuseum/go-www-geotag-whosonfirst/writer
 # github.com/tidwall/gjson v1.6.0

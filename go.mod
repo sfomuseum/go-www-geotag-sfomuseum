@@ -9,8 +9,8 @@ require (
 	github.com/sfomuseum/go-flags v0.2.1
 	github.com/sfomuseum/go-geojson-geotag v0.0.3
 	github.com/sfomuseum/go-http-oauth2 v0.0.7
-	github.com/sfomuseum/go-www-geotag v0.0.16
-	github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.17
+	github.com/sfomuseum/go-www-geotag v0.0.17
+	github.com/sfomuseum/go-www-geotag-whosonfirst v0.0.18
 	github.com/whosonfirst/go-bindata v0.1.0
 	github.com/whosonfirst/go-bindata-assetfs v1.0.1
 	github.com/whosonfirst/go-reader-github v0.2.0

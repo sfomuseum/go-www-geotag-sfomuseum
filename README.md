@@ -1,5 +1,7 @@
 # go-www-geotag-sfomuseum
 
+![](docs/images/geotag-twopane.png)
+
 A web application, written in Go, for geotagging images in the SFO Museum collection.
 
 ## Important
