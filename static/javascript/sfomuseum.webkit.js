@@ -26,11 +26,32 @@ sfomuseum.webkit = (function(){
 	},
 	
 	'setAccessToken': function(token){
-	    
-	    sfomuseum.console.log("GOT TOKEN");
+	    sfomuseum.console.log("Set OAuth2 access token");
 	    document.body.setAttribute("data-oauth2-access-token", token);
 	},
-		
+
+	'loadOEmbedURL': function(url){
+	    
+	    sfomuseum.console.log("Received oEmbed request for " + url);
+
+	    var q_el = document.getElementById("oembed-url");
+
+	    if (! q_el){
+		sfomuseum.console.log("Missing oembed-url element.");
+		return;
+	    }
+	    
+	    var f_el = document.getElementById("oembed-fetch");
+	    
+	    if (! f_el){
+		sfomuseum.console.log("Missing oembed-fetch element.");
+		return;
+	    }
+
+	    q_el.value = url;
+	    f_el.click();
+	}
+	
     };
 
     return self;
