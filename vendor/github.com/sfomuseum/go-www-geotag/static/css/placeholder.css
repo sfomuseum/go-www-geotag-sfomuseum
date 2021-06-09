@@ -1,0 +1,25 @@
+#placeholder-results {
+	position: absolute;
+	z-index: 5000;
+	max-height: 200px;
+	width: 300px;
+	border: solid thin;
+	top: 3.20rem;
+	left: 1.25rem;
+	background-color: #fff;
+	overflow:scroll;
+	display:none;
+}
+
+.placeholder-row {
+	padding: .5rem;
+	border-bottom: solid thin;
+}
+
+.placeholder-row:hover{
+	background-color:#ccc;
+}
+
+.placeholder-row:last-child {
+	border-bottom:none;
+}

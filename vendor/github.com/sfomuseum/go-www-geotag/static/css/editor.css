@@ -1,0 +1,98 @@
+/* Tags */
+
+body {
+	background-color:#fff;
+}
+
+label {
+	font-style: italic;
+}
+
+summary {
+	margin-bottom:1rem;
+	font-weight:700;
+}
+
+/* IDs */
+
+#controls {
+	max-height: 80vh;
+	overflow:auto;
+}
+
+#editor {
+	display:grid;
+	grid-template-columns:33% 33% 33%;
+	margin-top:2rem;
+}
+
+#feature {
+	min-height:80vh !important;	
+	max-height:80vh !important;
+	overflow:auto;
+	border:solid thin;
+	font-family:monospace;
+	font-size:small;
+	padding:1rem;
+	margin-bottom:1rem;
+}
+
+#map {
+	border: solid thin;
+	width: 100%;
+	height: 80vh;
+}
+
+#oembed-image img {
+	width: -moz-available;
+	height: -moz-available;	
+}
+
+
+/* Classes */
+
+.col {
+	// border: solid thin;
+}
+
+.control {
+	margin-bottom: 1rem;
+}
+
+.leaflet-control-geotag-photo-camera img {
+	vertical-align: top !important;
+}
+
+.leaflet-control-geotag-photo-crosshair img {
+	vertical-align: top !important;
+}
+
+.oembed-form {
+	padding:.5rem;
+}
+
+/* Media queries */
+
+@media (max-width: 1240px) {
+	#editor {
+		grid-template-columns: 50% 50% !important;
+	}
+
+	#col-output {
+		grid-column-start: 1;
+		grid-column-end: span col2-start;
+	}
+}
+
+@media (max-width: 800px) {
+	#editor {
+		grid-template-columns: 100% !important;
+	}
+
+	#col-output {
+		grid-column-start: 1;
+		grid-column-end: 1 !important;
+	}
+	
+}
+

@@ -13,15 +13,20 @@ import (
 	"github.com/sfomuseum/go-flags/lookup"
 	"github.com/sfomuseum/go-http-leaflet-geotag"
 	"github.com/sfomuseum/go-http-leaflet-layers"
+	"github.com/sfomuseum/go-http-protomaps"
 	tzhttp "github.com/sfomuseum/go-http-tilezen/http"
 	"github.com/sfomuseum/go-www-geotag/api"
 	"github.com/sfomuseum/go-www-geotag/geo"
 	"github.com/sfomuseum/go-www-geotag/writer"
 	"github.com/sfomuseum/go-www-geotag/www"
 	"github.com/whosonfirst/go-cache"
+	pip_api "github.com/whosonfirst/go-whosonfirst-spatial-pip/api"
+	spatial_app "github.com/whosonfirst/go-whosonfirst-spatial/app"
+	spatial_www "github.com/whosonfirst/go-whosonfirst-spatial-www/http"	
 	"log"
 	"net/http"
 	"net/url"
+	"path/filepath"
 	"strings"
 	"sync"
 	"time"
@@ -33,17 +38,42 @@ var cr crumb.Crumb
 var crumb_err error
 
 func init() {
-	// because the tangramjs stuff will add it
+	// because the tangramjs or the protomaps stuff will add it
 	geotag.INCLUDE_LEAFLET = false
 	layers.INCLUDE_LEAFLET = false
 }
 
 func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
 
-	err := tangramjs.AppendAssetHandlers(mux)
+	map_renderer, err := lookup.StringVar(fs, "map-renderer")
 
 	if err != nil {
 		return err
+	}
+
+	// PROTOMAPS: this remains to be reconciled with the Tangram.js + Nextzen stuff
+	// In the end what you see below might just be the simplest way to "reconcile"
+	// things (20210423/thisisaaronland)
+
+	switch map_renderer {
+	case "protomaps":
+
+		err := protomaps.AppendAssetHandlers(mux)
+
+		if err != nil {
+			return err
+		}
+
+	case "tangramjs":
+
+		err := tangramjs.AppendAssetHandlers(mux)
+
+		if err != nil {
+			return err
+		}
+
+	default:
+		// pass
 	}
 
 	err = bootstrap.AppendAssetHandlers(mux)
@@ -79,6 +109,63 @@ func AppendAssetHandlers(ctx context.Context, fs *flag.FlagSet, mux *http.ServeM
 		return err
 	}
 
+	return nil
+}
+
+func AppendPointInPolygonHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
+
+	enable_pip, err := lookup.BoolVar(fs, "enable-point-in-polygon")
+
+	if err != nil {
+		return err
+	}
+
+	if !enable_pip {
+		return nil
+	}
+
+	return AppendPointInPolygonHandler(ctx, fs, mux)
+}
+
+func AppendPointInPolygonHandler(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
+
+	app, err := spatial_app.NewSpatialApplicationWithFlagSet(ctx, fs)
+
+	if err != nil {
+		return fmt.Errorf("Failed to create new spatial application, %v", err)
+	}
+
+	pip_opts := &pip_api.PointInPolygonHandlerOptions{
+		// EnableGeoJSON: true,
+	}
+
+	pip_handler, err := pip_api.PointInPolygonHandler(app, pip_opts)
+
+	if err != nil {
+		return fmt.Errorf("Failed to create PointInPolygonHandler handler, %v", err)
+	}
+
+	path_pip, err := lookup.StringVar(fs, "path-point-in-polygon")
+
+	if err != nil {
+		return fmt.Errorf("Failed to create PointInPolygonHandler handler - unable to lookup -path-point-in-polygon flag, %v", err)
+	}
+
+	mux.Handle(path_pip, pip_handler)
+
+	data_handler, err := spatial_www.NewDataHandler(app.SpatialDatabase)
+
+	if err != nil {
+		return fmt.Errorf("Failed to create DataHandler, %v", err)
+	}
+
+	path_pip_data, err := lookup.StringVar(fs, "path-point-in-polygon-data")
+
+	if err != nil {
+		return fmt.Errorf("Failed to create DataHandler handler - unable to lookup -path-point-in-polygon-data flag, %v", err)
+	}
+
+	mux.Handle(path_pip_data, data_handler)
 	return nil
 }
 
@@ -118,6 +205,12 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
+	map_renderer, err := lookup.StringVar(fs, "map-renderer")
+
+	if err != nil {
+		return nil, err
+	}
+
 	nextzen_apikey, err := lookup.StringVar(fs, "nextzen-apikey")
 
 	if err != nil {
@@ -131,6 +224,12 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 	}
 
 	nextzen_tile_url, err := lookup.StringVar(fs, "nextzen-tile-url")
+
+	if err != nil {
+		return nil, err
+	}
+
+	protomaps_tile_url, err := lookup.StringVar(fs, "protomaps-tile-url")
 
 	if err != nil {
 		return nil, err
@@ -178,6 +277,24 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
+	enable_pip, err := lookup.BoolVar(fs, "enable-point-in-polygon")
+
+	if err != nil {
+		return nil, err
+	}
+
+	path_pip, err := lookup.StringVar(fs, "path-point-in-polygon")
+
+	if err != nil {
+		return nil, err
+	}
+
+	path_pip_data, err := lookup.StringVar(fs, "path-point-in-polygon-data")
+
+	if err != nil {
+		return nil, err
+	}
+	
 	enable_oembed, err := lookup.BoolVar(fs, "enable-oembed")
 
 	if err != nil {
@@ -214,23 +331,41 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
-	if enable_proxy_tiles {
+	// PROTOMAPS: this needs to stay in sync with code in AppendProtomapsTilesHandlerIfNecessary
+	// This takes a singular protomaps-tile-url and if it is a file:// URI
+	// its filename is joined with protomaps-tiles-path to create a new path and this
+	// path is registered with the http.ServeMux (and handled by the http.Dir
+	// instance). It would be nice if this could just be handled by / hidden in
+	// sfomuseum/go-http-leaflet-protomaps but I am not sure if that actually
+	// makes sense yet (20210423/thisisaaronland)
 
-		path_proxy_tiles, err := lookup.StringVar(fs, "path-proxy-tiles")
+	if map_renderer == "protomaps" {
+
+		u, err := url.Parse(protomaps_tile_url)
 
 		if err != nil {
 			return nil, err
 		}
 
-		nextzen_tile_url = fmt.Sprintf("%s{z}/{x}/{y}.mvt", path_proxy_tiles)
+		if u.Scheme == "file" {
+
+			protomaps_tiles_path, err := lookup.StringVar(fs, "protomaps-tiles-path")
+
+			if err != nil {
+				return nil, err
+			}
+
+			abs_path, err := filepath.Abs(u.Path)
+
+			if err != nil {
+				return nil, err
+			}
+
+			fname := filepath.Base(abs_path)
+
+			protomaps_tile_url = filepath.Join(protomaps_tiles_path, fname)
+		}
 	}
-
-	bootstrap_opts := bootstrap.DefaultBootstrapOptions()
-
-	tangramjs_opts := tangramjs.DefaultTangramJSOptions()
-	tangramjs_opts.Nextzen.APIKey = nextzen_apikey
-	tangramjs_opts.Nextzen.StyleURL = nextzen_style_url
-	tangramjs_opts.Nextzen.TileURL = nextzen_tile_url
 
 	geotag_opts := geotag.DefaultLeafletGeotagOptions()
 
@@ -239,6 +374,7 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		InitialLatitude:  initial_latitude,
 		InitialLongitude: initial_longitude,
 		InitialZoom:      initial_zoom,
+		MapRenderer:      map_renderer,
 	}
 
 	if enable_writer {
@@ -256,6 +392,13 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 
 		editor_opts.EnablePlaceholder = enable_placeholder
 		editor_opts.PlaceholderEndpoint = placeholder_endpoint
+	}
+
+	if enable_pip {
+
+		editor_opts.EnablePointInPolygon = enable_pip
+		editor_opts.PointInPolygonEndpoint = path_pip
+		editor_opts.PointInPolygonDataEndpoint = path_pip_data
 	}
 
 	if enable_oembed {
@@ -302,8 +445,41 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 		return nil, err
 	}
 
+	bootstrap_opts := bootstrap.DefaultBootstrapOptions()
 	editor_handler = bootstrap.AppendResourcesHandler(editor_handler, bootstrap_opts)
-	editor_handler = tangramjs.AppendResourcesHandler(editor_handler, tangramjs_opts)
+
+	switch map_renderer {
+	case "protomaps":
+
+		pm_opts := protomaps.DefaultProtomapsOptions()
+		pm_opts.TileURL = protomaps_tile_url
+
+		editor_handler = protomaps.AppendResourcesHandler(editor_handler, pm_opts)
+
+	case "tangramjs":
+
+		if enable_proxy_tiles {
+
+			path_proxy_tiles, err := lookup.StringVar(fs, "path-proxy-tiles")
+
+			if err != nil {
+				return nil, err
+			}
+
+			nextzen_tile_url = fmt.Sprintf("%s{z}/{x}/{y}.mvt", path_proxy_tiles)
+		}
+
+		tangramjs_opts := tangramjs.DefaultTangramJSOptions()
+		tangramjs_opts.Nextzen.APIKey = nextzen_apikey
+		tangramjs_opts.Nextzen.StyleURL = nextzen_style_url
+		tangramjs_opts.Nextzen.TileURL = nextzen_tile_url
+
+		editor_handler = tangramjs.AppendResourcesHandler(editor_handler, tangramjs_opts)
+
+	default:
+		return nil, fmt.Errorf("Invalid or unsupported -map-renderer flag ('%s')", map_renderer)
+	}
+
 	editor_handler = geotag.AppendResourcesHandler(editor_handler, geotag_opts)
 
 	if enable_map_layers {
@@ -318,6 +494,59 @@ func NewEditorHandler(ctx context.Context, fs *flag.FlagSet) (http.Handler, erro
 	}
 
 	return editor_handler, nil
+}
+
+// PROTOMAPS: this needs to stay in sync with code in NewEditorHandler
+// This takes a singular protomaps-tile-url and if it is a file:// URI
+// creates an http.Dir instance for its parent directory. The filename (for protomaps-tile-url)
+// is joined with protomaps-tiles-path to create a new path and this
+// path is registered with the http.ServeMux (and handled by the http.Dir
+// instance). It would be nice if this could just be handled by / hidden in
+// sfomuseum/go-http-leaflet-protomaps but I am not sure if that actually
+// makes sense yet (20210423/thisisaaronland)
+
+func AppendProtomapsTilesHandlerIfNecessary(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {
+
+	protomaps_tile_url, err := lookup.StringVar(fs, "protomaps-tile-url")
+
+	if err != nil {
+		return err
+	}
+
+	protomaps_tiles_path, err := lookup.StringVar(fs, "protomaps-tiles-path")
+
+	if err != nil {
+		return err
+	}
+
+	map_renderer, err := lookup.StringVar(fs, "map-renderer")
+
+	if err != nil {
+		return err
+	}
+
+	if map_renderer != "protomaps" {
+		return nil
+	}
+
+	u, err := url.Parse(protomaps_tile_url)
+
+	if err != nil {
+		return err
+	}
+
+	if u.Scheme != "file" {
+		return nil
+	}
+
+	mux_url, mux_handler, err := protomaps.FileHandlerFromPath(u.Path, protomaps_tiles_path)
+
+	if err != nil {
+		return err
+	}
+
+	mux.Handle(mux_url, mux_handler)
+	return nil
 }
 
 func AppendWriterHandlerIfEnabled(ctx context.Context, fs *flag.FlagSet, mux *http.ServeMux) error {

@@ -1,0 +1,79 @@
+{{ define "editor" }}
+{{ template "inc_head" . }}
+
+<div class="container" id="editor" {{ if .EnablePointInPolygon}}data-point-in-polygon="enabled" data-point-in-polygon-endpoint="{{ .PointInPolygonEndpoint }}" data-point-in-polygon-data-endpoint="{{ .PointInPolygonDataEndpoint }}"{{ end }}>
+
+
+    <div class="col" id="col-map">	
+	<div id="map" data-map-renderer="{{ .MapRenderer }}"></div>		
+    </div>
+
+    <div class="col" id="col-controls">
+
+	<div id="controls">
+	    
+	{{ if .EnableOEmbed }}
+
+	<details class="control">
+	    <summary>Image</summary>
+	    <div>
+		<div id="col-oembed">
+		    <div id="oembed-image"></div>
+		    <div id="oembed-meta"></div>
+		</div>
+		
+		<div class="oembed-form">
+		    <form class="form">
+		    <div class="form-group">
+			<label for="oembed-url">Display an image</label>					
+			<input class="form-control mr-sm-2" type="search" name="oembed-url" id="oembed-url" placeholder="Enter a URL to retrieve" value="" aria-label="Fetch" aria-describedby="oembed-url-help" />
+			<small id="oembed-url-help" class="form-text text-muted">A valid OEmbed URL for retrieving an image to display.</small>		
+		    </div>
+		    <button class="btn btn-primary pull-right" type="submit" id="oembed-fetch">Fetch</button>
+		    </form>
+		</div>
+	    </div>
+	</details>
+	{{ end }}
+	
+	{{ if .EnablePointInPolygon }}
+
+	<details class="control">
+		<summary>Point in polygon</summary>
+		<form id="point-in-polygon">
+		    <div id="point-in-polygon-candidates" class="form-group">&#160;</div>
+
+		    <details class="control">
+			<summary>Filter</summary>
+			<div class="form-group">
+			    <label for="inception">Inception date</label>
+			    <input type="text" value="" id="point-in-polygon-inception" placeholder="inception" class="form-control" aria-describedby="inception-help"/>
+			    <small id="inception-help" class="form-text text-muted">A valid EDTF string to filter result's inception date with.</small>
+			</div>
+			<div class="form-group">
+			    <label for="cessation">Cessation date</label>			
+			    <input type="text" value="" id="point-in-polygon-cessation" placeholder="cessation" class="form-control" aria-describedby="cessation-help"/>
+			    <small id="cessation-help" class="form-text text-muted">A valid EDTF string to filter result's cessation date with.</small>			
+			</div>
+		    </details>
+		</form>
+	</details>
+	{{ end }}
+
+	</div>
+	
+    </div>
+
+    <div class="col" id="col-output">    
+	<div id="feature"></div>
+	
+    	{{ if .EnableWriter }}
+	<button id="writer-save" class="btn btn-primary">Save</button>
+	{{ end }}
+	
+    </div>
+
+</div>
+
+{{ template "inc_foot" . }}
+{{ end }}

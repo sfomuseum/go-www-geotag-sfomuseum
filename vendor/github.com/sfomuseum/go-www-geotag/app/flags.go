@@ -4,6 +4,7 @@ import (
 	"flag"
 	"github.com/aaronland/go-http-tangramjs"
 	"github.com/sfomuseum/go-flags/flagset"
+	spatial_flags "github.com/whosonfirst/go-whosonfirst-spatial/flags"
 )
 
 func CommonFlags() (*flag.FlagSet, error) {
@@ -11,8 +12,6 @@ func CommonFlags() (*flag.FlagSet, error) {
 	fs := flagset.NewFlagSet("geotag")
 
 	fs.String("server-uri", "http://localhost:8080", "A valid aaronland/go-http-server.Server URI for creating an application server.")
-
-	fs.String("path-templates", "", "Path to a directory containing custom templates. If empty built-in templates will be used.")
 
 	fs.Bool("enable-editor", true, "Enable the geotagging editor interface.")
 
@@ -37,25 +36,80 @@ func CommonFlags() (*flag.FlagSet, error) {
 
 	fs.String("crumb-uri", "auto", "A valid aaronland/go-http-crumb.Crumb URI for generating (CSRF) crumbs. If the value is 'auto' then a random crumb URI will be generated.")
 
-	err := AppendLeafletFlags(fs)
+	err := AppendMapFlags(fs)
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = AppendNextzenFlags(fs)
-
-	if err != nil {
-		return nil, err
-	}
-
-	err = AppendTilezenFlags(fs)
+	err = AppendPointInPolygonFlags(fs)
 
 	if err != nil {
 		return nil, err
 	}
 
 	return fs, nil
+}
+
+func AppendPointInPolygonFlags(fs *flag.FlagSet) error {
+
+	fs.Bool("enable-point-in-polygon", false, "Enable point-in-polygon lookups for results.")
+
+	fs.String("path-point-in-polygon", "/point-in-polygon/", "The URI for point-in-polygon API requests.")
+	fs.String("path-point-in-polygon-data", "/point-in-polygon/data/", "The URI for point-in-polygon data requests.")	
+
+	err := spatial_flags.AppendCommonFlags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	err = spatial_flags.AppendIndexingFlags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func AppendMapFlags(fs *flag.FlagSet) error {
+
+	fs.String("map-renderer", "tangramjs", "Valid options are: protomaps, tangramjs")
+
+	err := AppendLeafletFlags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	err = AppendProtomapsFlags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	err = AppendNextzenFlags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	err = AppendTilezenFlags(fs)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func AppendProtomapsFlags(fs *flag.FlagSet) error {
+
+	fs.String("protomaps-tile-url", "", "A valid Protomaps tile URL for loading map tiles.")
+	fs.String("protomaps-tiles-path", "/pmtiles/", "The leading prefix for Protomap tile URLs.")
+
+	return nil
 }
 
 // because eventually we're going to put this in a nextzen specific package
@@ -92,7 +146,7 @@ func AppendLeafletFlags(fs *flag.FlagSet) error {
 
 	fs.Float64("initial-latitude", 37.61799, "A valid latitude for the map's initial view.")
 	fs.Float64("initial-longitude", -122.370943, "A valid longitude for the map's initial view.")
-	fs.Int("initial-zoom", 14, "A valid zoom level for the map's initial view.")
+	fs.Int("initial-zoom", 15, "A valid zoom level for the map's initial view.")
 
 	return nil
 }
